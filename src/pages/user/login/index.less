@@ -1,0 +1,256 @@
+@border1: 1px solid rgb(155, 189, 235);
+.keysframes (@name, @content) {
+  @keyframes @name {
+    @content();
+  }
+};
+
+.keysframes(loading, {
+  from {transform: rotateZ(0deg)}
+  to {transform: rotateZ(360deg)}
+});
+@media screen and (max-width: 443px) {
+  .container{
+    padding: 0;
+  }
+  .log-form{
+    border-radius: 0 !important;
+    width: 100% !important;
+    margin: 100px 0px !important;
+  }
+}
+body{
+
+  height: 100vh;
+  width : 100%;
+  min-width: 378px;
+  background: url('~@assets/images/user/bgd.jpg') no-repeat center center;
+  background-attachment: fixed;
+  // 外框
+  .container{overflow: hidden;}
+  .log-form{
+    max-width: 450px;
+    height: 550px;
+    position: relative;
+    padding-top: 250px;
+    margin: 100px auto 50px auto;
+    border-radius: 20px;
+    border:1px solid  rgb(228, 228, 228); 
+    background-color: rgba(255, 255, 255, 0.178);
+
+    
+    // 注册图标
+    .register-img{
+      // width: 20%;
+      // height: 60px;
+      position: absolute;
+      top:0;
+      left: 0;
+      // transform: scale(0.8);
+    }
+    // 正常图片
+    .normal{
+      display: block;
+      position: absolute;
+      top: -54px;
+      left: 50%;
+      -webkit-transform: translate(-50%,0);
+      -ms-transform: translate(-50%,0);
+      -moz-transform: translate(-50%,0);
+      transform: translate(-50%,0);
+    }
+    
+    .alert{
+      width: 100%;
+      position: absolute;
+      top: 185px;
+      left: 0;
+      display: none;
+    }
+    // 熊猫身下圆盘
+    &::after{
+      content: "";
+      width: 80%;
+      height: 70px;
+      position: absolute;
+      top: 113px;
+      left: 50%;
+      z-index: -1;
+      transform: translate(-50%,0);
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.438);
+      box-shadow: 3px 3px 5px 1px rgba(0, 0, 0, 0.548);
+    }
+
+    // username 和 password div
+    .form-group-item{
+      position: relative;
+
+      &.username{
+        img{
+          position: absolute;
+          visibility: hidden;
+          left: 50%;
+          transform: translate(-50%, 0);
+          top: -312px;
+        }
+
+        &:focus-within {
+          img{
+            visibility: visible;
+          }
+          ~img{
+            visibility: hidden;
+          }
+        }
+      }
+
+      &.password{
+        img{
+          visibility: hidden;
+          position: absolute;
+          left: 50%;
+          top: -354px;
+          transform: translate(-50%, 0)
+        }
+
+        &:focus-within {
+          img{
+            visibility: visible;
+          }
+          ~img{
+            visibility: hidden;
+          }
+        }
+      }
+
+      // 用户密码 的 字体图标
+      .iconfont:not(.icon-loading){
+        width: 62px;
+        height: 62px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        color: #007bff;
+        box-sizing: border-box;
+        border-right: 1px solid #eee;
+        line-height: 62px;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      // label 文字
+      .placeholder{
+        height: 62px;
+        padding-left: 62px;
+        position: absolute;
+        top: 0;
+        font-size: 22px;
+        line-height: 62px;
+        transition: all .1s linear;
+      }
+
+      // 提示文字
+      .tip{
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 62px;
+        line-height: 62px;
+        font-style: normal;
+        color: #e60023;
+        display: none;
+      }
+      // 输入框 placeholder样式 和 没有placeholder时的触发的选择器
+      input{
+        height: 62px;
+        font-size: 20px;
+        padding-left: 62px;
+
+        &::-webkit-input-placeholder{
+          color: transparent
+        }
+        &::-ms-input-placeholder{
+          color: transparent
+        }
+        &::-moz-input-placeholder{
+          color: transparent
+        }
+        &::placeholder{
+          color: transparent
+        }
+        &:not(:placeholder-shown)+label{
+        padding-left: 62px;
+        line-height: 18px;
+        font-size: 18px;
+        color: #aaa;
+        }
+      }
+    }
+
+    // 注册,登陆,忘记密码
+    .form-group-func{
+      text-align: center;
+      font-size: 0;
+      .sb{
+        width: 100%;
+        height: 55px;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      
+
+      span{
+        font-size: 24px;
+      }
+      a{
+        font-size: 24px;
+      }
+    }
+
+    // 幕布
+    .curtain{
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      margin: auto;
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(221, 221, 221, 0.281);
+
+      .box{
+        height: 40px;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        color: var(--green);
+        font-size: 26px;
+        font-weight: bold;
+        text-align: center;
+        // 登录成功后的loading
+        .icon-loading {
+          position: relative;
+          display: inline-block;
+          font-weight: bold;
+          animation: loading 1s linear infinite;
+          &::before{
+            font-size: 26px;
+          }
+        }
+        .toTarget{
+          bottom: 0;
+          color: var(--green);
+          font-size: 26px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

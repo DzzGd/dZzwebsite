@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="cn-Zh">
+
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title><%= htmlWebpackPlugin.options.title%></title>
+
+  <!-- <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> -->
+</head>
+
+<body>
+  <!-- <div class="container">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a data-toggle="tab" class="nav-link" href="#c1">Home</a>
+      </li>
+      <li class="nav-item">
+        <a data-toggle="tab" class="nav-link" href="#c2">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a data-toggle="tab" class="nav-link active" href="#c3">Messages</a>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <div id="c1" class="tab-pane active">1</div>
+      <div id="c2" class="tab-pane">2</div>
+      <div id="c3" class="tab-pane">3</div>
+    </div>
+  </div> -->
+  <div class="container">
+    <div class="log-form">
+      <form class="form">
+        <img src="<%= require('@assets/images/logos/login.png')%>" alt="注册logo" class="register-img">
+        <div class="alert alert-danger"></div>
+        <div class="form-group form-group-item username">
+          <i class="iconfont icon-login_zhanghu"></i>
+          <input type="text" name="username" id="username" class="un form-control" autocomplete="off" placeholder="0"
+            maxlength="16" minlength="6">
+          <label for="username" class="placeholder">username</label>
+          <i class="tip username-tip">123</i>
+          <img src="<%= require('@assets/images/user/greeting.png')%>" alt="">
+        </div>
+
+        <div class="form-group form-group-item password">
+          <i class="iconfont icon-mimalan"></i>
+          <input type="password" name="password" id="password" class="pwd form-control" placeholder="0" maxlength="16"
+            minlength="6">
+          <label for="password" class="placeholder">password</label>
+          <i class="tip password-tips">你输入的密码有误</i>
+          <img src="<%= require('@assets/images/user/blindfold.png')%>" alt="">
+        </div>
+
+        <div class="form-group form-group-func">
+          <input type="button" value="登 录" class="sb btn btn-primary" id="login">
+          <a href="/register" class="register">Register&nbsp;&nbsp;</a>
+          <span>|</span>
+          <a href="/forget" class="forget">&nbsp;&nbsp;Forget</a>
+        </div>
+        <img src="<%= require('@assets/images/user/normal.png')%>" alt="" class="normal">
+      </form>
+      <div class="curtain">
+        <div class="box">
+          <i class="iconfont icon-loading"></i><br />
+          <strong class="toTarget">
+            <a href="">准备跳转...</a>
+          </strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

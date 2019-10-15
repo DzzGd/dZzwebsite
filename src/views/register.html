@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title><%= htmlWebpackPlugin.options.title%></title>
+</head>
+
+<body>
+  <div class="container">
+
+    <form class="form border border-primary rounded">
+      
+      <img src="<%= require('@assets/images/logos/register.png')%>" alt="注册logo" class="register-img">
+      <div class="form-head border-bottom">
+      </div>
+
+      <div class="form-group">
+        <div class="positionBox">
+          <label for="username">用户名</label>
+          <input autocomplete="off" type="text" name="username" id="username" class="form-control">
+          <i class="iconfont icon-icon1"> 已存在</i>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="positionBox">
+          <label for="email">邮箱</label>
+          <input autocomplete="off" type="text" name="email" id="email" class="form-control">
+          <i class="iconfont icon-icon1"> 已存在</i>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="positionBox">
+          <label for="password">密码</label>
+          <input autocomplete="off" type="password" name="password" id="password" class="form-control">
+          <i class="iconfont icon-icon1"> 格式不正确</i>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <div class="positionBox">
+          <label for="password-confirm" class="">确认密码</label>
+          <input autocomplete="off" type="password" name="password-confirm" id="password-confirm" class="form-control">
+          <i class="iconfont icon-icon1"> 两次密码同</i>
+        </div>
+
+      </div>
+      <div class="form-group submit-box">
+        <input type="button" id="submit" class="btn btn-primary" value="提交">
+        <p>
+          <span>已有账号?</span>
+          <a href="/login" id="login" class="">
+            直接登录
+          </a>
+        </p>
+
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

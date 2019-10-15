@@ -1,0 +1,131 @@
+@media screen and (max-width: 575px) {
+  .container{
+    padding: 0;
+  }
+  .form{
+    border-radius: 0 !important;
+    width: 100% !important;
+    max-width: 414px !important;
+    padding: 0 10px;
+
+
+    .form-group{
+      padding: 0 !important;
+    }
+    label{
+      text-align: left !important;
+      height: 24px !important;
+      line-height: 24px !important;
+      font-size: 14px;
+      margin-bottom: 0 !important;
+    }
+    #login{
+      position: static !important;
+    }
+  }
+}
+@media screen and (min-width:576px) and  (max-width: 992px) {
+  .form{
+    width: 100% !important;
+    padding: 0 35px;
+    .form-group{
+      padding: 4px !important;
+    }
+    label{
+      text-align: left !important;
+      height: 30px !important;
+      line-height: 30px !important;
+    }
+    .submit-box{
+      justify-content: space-between !important;
+      #login{
+        position: static !important;
+      }
+    }
+  }
+}
+@media screen and (min-width:992px)  {
+  label{
+    margin-bottom: 0;
+  }
+}
+body{
+  height: 100vh;
+  width : 100%;
+  min-width: 320px;
+  padding-top: 50px;
+  background: url('~@assets/images/user/bgd.jpg') no-repeat center center;
+  background-attachment: fixed;
+  // 外框
+  .container{overflow: hidden;}
+  .form{
+    max-width: 550px;
+    margin: 0 auto;
+    padding-bottom: 20px;
+    border-radius: 8px;
+    border:1px solid  rgb(228, 228, 228); 
+    background-color: rgba(255, 255, 255, 0.795);
+
+
+    // 注册图标
+    .register-img{
+      // width: 20%;
+      // height: 60px;
+      position: absolute;
+      top:0;
+      left: 0;
+    }
+
+    // 头部div logo 
+    .form-head{
+      height: 150px;
+      border-bottom: 2px solid rgb(255, 255, 255);
+      background: url('~@assets/images/logos/1.png') no-repeat center center;
+    }
+
+    // 信息框用户名， 邮箱等等
+    .form-group{
+      margin: 0 !important;
+      padding: 16px;
+      position: relative;
+      .row{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+      }
+      label{
+        padding: 0 5px 0 0!important;
+        text-align: right;
+        height: 38px;
+        line-height: 38px;
+      }
+
+      .positionBox{
+    position: relative;
+    width: 100%;
+        &::before{
+          content: "";
+          z-index: 1;
+          display: block;
+          height: 38px;
+          width: 38px;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          border: 1px solid black;
+        }
+      }
+    }
+
+    // 提交框
+    .submit-box{
+      justify-content: center;
+      .btn {
+        margin-top: 10px;
+      }
+      #login{
+          position: relative;
+          left: 16.66667%;
+      }
+    }
+  }
+}
