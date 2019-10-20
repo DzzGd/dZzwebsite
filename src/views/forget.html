@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%= require('html-loader!./layout/head-common.html') %>
+  <title><%= htmlWebpackPlugin.options.title%></title>
+</head>
+
+<body>
+  <div class="container">
+
+    <form class="form rounded">
+      <a href="/login">
+        <img src="<%= require('@assets/images/logos/login.png')%>" alt="注册logo" class="register-img">
+      </a>
+      <div class="form-head border-bottom">
+      </div>
+
+      <div class="progress">
+        <div class="progress-bar" style="width: 100%;">
+        </div>
+        <div class="progress-line">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="stepContainer">
+        <div class="errTip alert alert-danger">出错了</div>
+        <div class="stepOne stepBox">
+          <div class="contain">
+            <div class="positionBox">
+              <label for="username">用户名</label>
+              <input autocomplete="off" type="text" name="username" id="username" class="form-control"
+                placeholder="请输入用户名">
+              <i class="iconfont icon-icon1"> </i>
+            </div>
+          </div>
+        </div>
+        <div class="stepTwo stepBox">
+          <div class="contain">
+            <div class="positionBox">
+              <label for="email">验证邮箱</label>
+              <input autocomplete="off" type="text" name="email" id="email" class="form-control" placeholder="请输入邮箱">
+              <i class="iconfont icon-icon1"> </i>
+            </div>
+          </div>
+        </div>
+        <div class="stepThree stepBox">
+          <div class="contain">
+            <div class="positionBox">
+              <label for="question">问题</label>
+              <input autocomplete="off" type="text" name="question" id="question" class="form-control" placeholder="问题" readonly value="so what is the question">
+              <i class="iconfont icon-icon1"> </i>
+            </div>
+            <div class="positionBox">
+              <label for="answer">您的答案</label>
+              <input autocomplete="off" type="text" name="answer" id="answer" class="form-control" placeholder="请输入答案">
+              <i class="iconfont icon-icon1"> </i>
+            </div>
+          </div>
+        </div>
+        <div class="stepFour stepBox">
+          <div class="contain">
+            <div class="positionBox">
+              <label for="password">新密码</label>
+              <input autocomplete="off" type="text" name="password" id="password" class="form-control"
+                placeholder="新密码">
+              <i class="iconfont icon-icon1"> </i>
+            </div>
+            <div class="positionBox">
+              <label for="password-confirm">确认新密码</label>
+              <input autocomplete="off" type="text" name="password-confirm" id="password-confirm" class="form-control"
+                placeholder="请在一次输入密码">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="button-box ">
+        <button class="btn btn-success" id="preStep" disabled>上一步</button>
+        <button class="btn btn-primary" id="nextStep">下一步</button>
+        <i class="iconfont icon-loading"> </i>
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

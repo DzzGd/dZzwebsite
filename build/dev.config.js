@@ -22,9 +22,21 @@ module.exports = webpackMerge(baseConfig, {
     inline    : true,  
     hot       : true,
     host      : getIPAdress(),
-    port      : 8080
-    // historyApiFallback 在SPA页面中, 依赖HTML5的history模式
+    port      : 8080,
+    historyApiFallback: true,
+    //SPA页面中, 依赖HTML5的history模式
+    // 代理
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:5200',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
   },
+
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
   ]

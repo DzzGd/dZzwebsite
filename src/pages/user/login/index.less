@@ -9,44 +9,39 @@
   from {transform: rotateZ(0deg)}
   to {transform: rotateZ(360deg)}
 });
-@media screen and (max-width: 443px) {
+@media screen and (max-width: 450px) {
   .container{
     padding: 0;
   }
   .log-form{
     border-radius: 0 !important;
     width: 100% !important;
-    margin: 100px 0px !important;
+    margin: 0 !important;
   }
 }
 body{
 
-  height: 100vh;
-  width : 100%;
-  min-width: 378px;
   background: url('~@assets/images/user/bgd.jpg') no-repeat center center;
   background-attachment: fixed;
   // 外框
-  .container{overflow: hidden;}
+  .container{margin-top: 100px;}
   .log-form{
     max-width: 450px;
+    min-width: 360px;
     height: 550px;
     position: relative;
     padding-top: 250px;
-    margin: 100px auto 50px auto;
-    border-radius: 20px;
+    margin:50px auto;
     border:1px solid  rgb(228, 228, 228); 
     background-color: rgba(255, 255, 255, 0.178);
-
-    
     // 注册图标
-    .register-img{
-      // width: 20%;
-      // height: 60px;
+    .login-img-box{
       position: absolute;
       top:0;
       left: 0;
-      // transform: scale(0.8);
+      transform: translate(-10px,0);
+      overflow: hidden;
+      width: 100%;
     }
     // 正常图片
     .normal{
@@ -202,10 +197,10 @@ body{
       
 
       span{
-        font-size: 24px;
+        font-size: 20px;
       }
       a{
-        font-size: 24px;
+        font-size: 20px;
       }
     }
 
@@ -241,13 +236,13 @@ body{
           font-weight: bold;
           animation: loading 1s linear infinite;
           &::before{
-            font-size: 26px;
+            font-size: 22px;
           }
-        }
+        } 
         .toTarget{
           bottom: 0;
           color: var(--green);
-          font-size: 26px;
+          font-size: 22px;
           font-weight: bold;
         }
       }

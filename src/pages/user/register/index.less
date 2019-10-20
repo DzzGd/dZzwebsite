@@ -2,12 +2,21 @@ body{
   background: url('~@assets/images/user/bgd.jpg') no-repeat  center;
   background-attachment: fixed;
 }
+@media screen and (max-Width:450px) {
+  .container{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 .container{
   .form{
     position: relative;
-    max-width: 400px;
+    max-width: 450px;
     min-width: 360px;
     margin   : 0 auto;
+    overflow: hidden;
+    padding-bottom: 50px;
+    background-color: rgba(255, 255, 255, 0.178);
     .register-img{
       position: absolute;
       left: 10px;
@@ -27,11 +36,13 @@ body{
       .positionBox{
         position: relative;
         .iconfont{
+          width: 100px;
           position: absolute;
           right: 12px;
           bottom: 6px;
           color: #e60023;
           display: none;
+          font-size: 12px;
         }
       }
       label{
@@ -42,7 +53,7 @@ body{
           border: none;
           background: none;
           border-bottom: 1px solid #aaa;
-        }
+        } 
       }
     }
     .form-group.submit-box{

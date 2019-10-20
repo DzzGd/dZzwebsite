@@ -15,10 +15,14 @@ const logIn = {
   },
   // 幕布提示
   doSuccess() {
-    $('.curtain').show()
+    let url = tool.getRedirectUrl('redirect')
+    $('.toTarget').html(`登陆成功,<a href="${decodeURIComponent(url)}">正在跳转</a>`)
     setTimeout(() => {
-      tool.toTarget(tool.getRedirectUrl('redirect'))
-    }, 1000);
+      tool.toTarget(url)
+    }, 500);
+  },
+  doFailed() {
+    $('.curtain').hide()
   },
   eventBind() {
     const _this = this
@@ -35,8 +39,10 @@ const logIn = {
         return _this.$alert.text('用户名不能为空').show()
       }
       if (!tool.validate('password', _this.userInfo.password)) {
-        return _this.$alert.text('密码不能为空').show()
+        return _this.$alert.text('密码至少为8位 ').show()
       }
+
+      $('.curtain').show()
       // 发送请求
       userService.logIn(_this.userInfo, function (ret) {
         let msg = ret.msg
@@ -45,9 +51,12 @@ const logIn = {
           _this.doSuccess()
         } else if (ret.status === 0) {
           _this.$alert.removeClass('alert-success').addClass('alert-danger').text(msg).show()
+          _this.doFailed()
         }
       }, function (err) {
         _this.$alert.removeClass('alert-success').addClass('alert-danger').text('网络出现错误,请稍后再试').show()
+        console.log(123)
+        _this.doFailed()
       })
     })
   }
