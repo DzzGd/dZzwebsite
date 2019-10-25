@@ -1,12 +1,15 @@
 <template>
-  <div class="friend-link">friendLink</div>
+  <div class="homepage-content">
+
+  </div>
 </template>
 
 <script>
 export default {
-  name: "FriendLink"
-};
+  name: 'HomepageContent'
+}
 </script>
 
 <style scoped lang="scss">
+
 </style>

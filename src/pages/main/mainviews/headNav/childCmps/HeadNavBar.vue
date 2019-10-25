@@ -32,6 +32,8 @@ export default {
   display: flex;
   text-align: center;
   li {
+    font-family: "新宋体";
+    font-weight: bold;
     flex: 1;
     height: 80px;
     box-sizing: border-box;

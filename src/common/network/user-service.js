@@ -5,7 +5,7 @@ module.exports = {
   // 登录 
   logIn(userInfo, resolve, reject) {
     tool.request({
-      url   : '/api/front/login',
+      url   : '/api/front/user/login',
       method: 'post',
       data  : qs.stringify(userInfo),
       withCredentials: true
@@ -17,7 +17,7 @@ module.exports = {
   },
   register(userInfo, resolve, reject) {
     tool.request({
-      url   : '/api/front/register',
+      url   : '/api/front/user/register',
       method: 'post',
       data: qs.stringify(userInfo)
     }).then(res  => {
@@ -28,7 +28,7 @@ module.exports = {
   },
   registerSingle(userInfo, resolve, reject) {
     tool.request({
-      url   : '/api/front/register/single',
+      url   : '/api/front/register/user/single',
       method: 'get',
       params: userInfo
     }).then(res  => {
@@ -39,7 +39,7 @@ module.exports = {
   },
   isLogined(resolve, reject) {
     tool.request({
-      url   : '/api/front/isLogined',
+      url   : '/api/front/user/isLogined',
       method: 'get',
     }).then( res  => {
       resolve(res)
@@ -49,7 +49,7 @@ module.exports = {
   },
   forget(userInfo) {
     return tool.request({
-      url   : '/api/front/forget',
+      url   : '/api/front/user/forget',
       method: 'post',
       data  : qs.stringify(userInfo)
     })

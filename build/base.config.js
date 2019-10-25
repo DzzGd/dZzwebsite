@@ -25,6 +25,7 @@ module.exports = {
       '@assets': resolve('src/assets'),
       '@images': resolve('src/assets/images'),
       '@main'  : resolve('src/pages/main'),
+      '@commonCmps': resolve('src/pages/main/commonCmps'),
       '@components': resolve('src/pages/main/components'),
       '@mainviews': resolve('src/pages/main/mainviews'),
     },

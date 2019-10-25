@@ -1,21 +1,25 @@
 <template>
   <div class="App">
+    <!-- class="is-vertical" 是element-ui竖直布局的标识 不能删 -->
     <el-container class="is-vertical">
       <!-- 头部 -->
       <head-nav></head-nav>
+      <div class="container">
+        <el-container class="main-body">
+          <!-- 侧边广告 -->
+          <side-adver></side-adver>
 
-      <el-container>
-        <!-- 侧边广告 -->
-        <side-adver></side-adver>
+          <!-- 主体 -->
+          <el-main class="el-main">
+            <router-view></router-view>
+          </el-main>
 
-        <!-- 主体 -->
-        
-        <router-view></router-view>
-        <!-- 侧边信息广播 -->
-        <side-broadcast></side-broadcast>
+          <!-- 侧边信息广播 -->
+          <side-broadcast></side-broadcast>
+        </el-container>
+      </div>
 
-      </el-container>
-
+      <leave-message class="dz-leave-message"></leave-message>
       <!-- 底部 -->
       <footer-content></footer-content>
     </el-container>
@@ -28,21 +32,54 @@ import SideAdver from "@mainviews/sideAdver/SideAdver";
 import SideBroadcast from "@mainviews/sideBroadcast/SideBroadcast";
 import FooterContent from "@mainviews/footerContent/FooterContent";
 
-import { debounce } from "@common/utils/homepagetool"
+import LeaveMessage from "@commonCmps/leaveMessage/LeaveMessage";
+import homepageService from "@common/network/homepage-service";
+import { debounce, throttle } from "@common/utils/apptools";
 export default {
   name: "App",
   data: () => ({
     resiponsiveView: true
   }),
+  created() {
+    this.getUserInfo();
+  },
   mounted() {
-    let windowResize = debounce(this.resiponsiveEvent, 50)
-    window.addEventListener('resize', (e) => {
-      windowResize()
-    })
+    // 全局宽度变化和滚动监听  设定事件总线
+    let windowResize = debounce(this.resiponsiveResize, 50);
+    let windowScroll = throttle(this.resiponsiveScroll, 50);
+    window.addEventListener("resize", e => {
+      windowResize();
+    });
+    document.addEventListener("scroll", e => {
+      windowScroll();
+    });
   },
   methods: {
-    resiponsiveEvent() {
-      this.$bus.$emit('resizeWindow', document.body.clientWidth)
+    resiponsiveResize() {
+      this.$bus.$emit("resizeWindow", document.body.clientWidth);
+    },
+    resiponsiveScroll() {
+      let scrolltop =
+        document.documentElement.scrollTop || document.body.scrollTop;
+      this.$bus.$emit("windowScroll", scrolltop);
+    },
+    // 获取全局登录状态
+    getUserInfo() {
+      homepageService.getUserInfo(
+        (isAccess, userInfo) => {
+          if (!isAccess)
+            return this.$store.dispatch("store_changeLogStatus", {
+              access: false
+            });
+          this.$store.dispatch("store_changeLogStatus", {
+            access: true,
+            userInfo
+          });
+        },
+        err => {
+          this.$store.dispatch("store_changeLogStatus", { access: false });
+        }
+      );
     }
   },
   components: {
@@ -50,23 +87,47 @@ export default {
     MainBody,
     SideAdver,
     SideBroadcast,
-    FooterContent
+    FooterContent,
+    LeaveMessage
   }
 };
 </script>
 <style lang="scss">
+@media screen and (min-width: 320px) and (max-width: 992px) {
+  .dz-leave-message {
+    display: block !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .dz-leave-message {
+    margin-right: 220px !important;
+  }
+}
 body {
+  background-color: rgb(245, 249, 255);
+  .dz-leave-message {
+    display: none;
+  }
+  .is-vertical {
+    padding-top: 80px;
+  }
+  .main-body{
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .el-main {
+    padding: 0;
+  }
   &::-webkit-scrollbar {
     width: 4px;
     height: 10px;
-    // display: none;
   }
   &::-webkit-scrollbar-thumb {
-    background-color: lightblue;
+    background-color: rgb(119, 190, 214);
   }
   &::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
 }
-
 </style>

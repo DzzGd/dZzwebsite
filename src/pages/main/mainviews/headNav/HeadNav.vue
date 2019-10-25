@@ -1,5 +1,5 @@
 <template>
-  <el-header height="80px" class="head-nav">
+  <el-header height="80px" class="head-nav" :class="{isScrollTop: scrollTop}">
     <div class="logo">
       <a href="/" class="logo-link"></a>
     </div>
@@ -16,6 +16,23 @@ import HeadNavBar from "./childCmps/HeadNavBar";
 import HeadNavAvatar from "./childCmps/HeadNavAvatar";
 export default {
   name: "HeadNav",
+  data() {
+    return {
+      scrollTop: false
+    }
+  },
+  mounted() {
+    this.$bus.$on('windowScroll',this.adjustHeadNav)
+  },
+  methods: {
+    adjustHeadNav(scroll) {
+      if (scroll >= 100) {
+        this.scrollTop = true;
+      } else {
+        this.scrollTop = false
+      }
+    }
+  },
   components: {
     HeadNavBar,
     HeadNavAvatar
@@ -35,11 +52,15 @@ export default {
     }
   }
 }
+.isScrollTop{
+  box-shadow: 2px 0 3px rgba(99, 99, 99, 0.3);
+}
 .head-nav {
   user-select: none;
   height: 80px;
   width: 100%;
-  margin: 0 auto;
+  top: 0;
+  position: fixed;
   border-bottom: 1px solid rgba(99, 99, 99, 0.3);
   margin-bottom: 10px;
   background-color: rgb(250, 250, 250);

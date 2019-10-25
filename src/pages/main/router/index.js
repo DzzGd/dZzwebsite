@@ -5,7 +5,7 @@ import HomePage from '@components/homePage/HomePage'
 Vue.use(VueRouter)
 
 const routes = [
-  { 
+  {
     path: '/',
     redirect: '/HomePage'
   },
@@ -31,7 +31,11 @@ const routes = [
   },
   {
     path: '/UserCenter',
-    component: resolve => require(['@components/usercenter/UserCenter'], resolve)
+    component: resolve => require(['@components/userCenter/UserCenter'], resolve)
+  },
+  {
+    path: '/MessageBoard',
+    component: resolve => require(['@components/messageBoard/MessageBoard'], resolve)
   }
 ]
 const router = new VueRouter({

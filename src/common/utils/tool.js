@@ -1,7 +1,7 @@
 const axios = require('axios')
 
 module.exports = {
-  // 网络请求
+  // 网络请求   
   createAxios() {
     const instance = axios.create({
       timeout: 5000,
@@ -16,7 +16,7 @@ module.exports = {
     ax.interceptors.request.use(config => {
       return config
     }, err => {
-      alert('获取登录状态失败', err)
+      alert('biubiubiu~失败了', err)
     })
     ax.interceptors.response.use(config => {
       // if (config.data.status === 9) { 是否登录
@@ -24,7 +24,7 @@ module.exports = {
       // }
       return config
     }, err => {
-      alert('获取登录状态失败', err)
+      alert('你是停机了吗~, 网络不通了', err)
     })
     return ax(config)
   },

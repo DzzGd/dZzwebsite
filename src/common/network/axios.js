@@ -13,16 +13,19 @@ module.exports = {
   },
   request(config) {
     const ax = this.createAxios()
-    ax.interceptors.request.use(info => {
+    
+    ax.interceptors.request
+    .use(info => {
       return info
     }, err => {
-      alert('获取登录状态失败', err)
+      return err
     })
 
-    ax.interceptors.response.use(info => {
+    ax.interceptors.response
+    .use(info => {
       return info
     }, err => {
-      alert('获取登录状态失败', err)
+      return err
     })
 
     return ax(config)
