@@ -98,7 +98,11 @@ export default {
     display: block !important;
   }
 }
-
+@media screen and (max-width: 570px){
+  .is-vertical{
+    padding-top: 60px !important;
+  }
+}
 @media screen and (min-width: 768px) and (max-width: 992px) {
   .dz-leave-message {
     margin-right: 220px !important;
@@ -118,6 +122,7 @@ body {
   }
   .el-main {
     padding: 0;
+    overflow: hidden;
   }
   &::-webkit-scrollbar {
     width: 4px;

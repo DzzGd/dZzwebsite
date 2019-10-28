@@ -76,7 +76,8 @@ export default {
       data : qs.stringify(data)
     })
       .then(res => {
-        if (res.data.status === 1) resolve(res.data.leaveMessage)
+        if (res.data.status === 1) resolve(true)
+        if (res.data.status === 0) resolve(false)
       })
       .catch(err => {
         reject(err)

@@ -10,8 +10,11 @@
       <li>
         <router-link to="/FriendShare">大家分享</router-link>
       </li>
-      <li>
+      <!-- <li>
         <router-link to="/Entertainment">娱乐</router-link>
+      </li> -->
+      <li>
+        <router-link to="/WriteArticle">写文章</router-link>
       </li>
       <li>
         <router-link to="/FriendLink">友情链接</router-link>
@@ -41,7 +44,6 @@ export default {
 
     &:hover {
       border-bottom: 4px solid #40a0ff96;
-      // background-color: #40a0ff96;
     }
     a {
       line-height: 80px;

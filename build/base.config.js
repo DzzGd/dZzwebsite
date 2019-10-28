@@ -104,7 +104,7 @@ module.exports = {
         vendors: {
           name: 'vendors',
           test: /[\\/]node_modules[\\/]/,
-          chunks   : 'all',
+          chunks   : 'initial',
           filename : 'js/vendors.js',
           minSize  : 0,
           minChunks: 1,

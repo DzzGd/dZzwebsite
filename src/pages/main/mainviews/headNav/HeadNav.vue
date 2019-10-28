@@ -35,7 +35,7 @@ export default {
   },
   components: {
     HeadNavBar,
-    HeadNavAvatar
+    HeadNavAvatar 
   }
 };
 </script>
@@ -53,7 +53,7 @@ export default {
   }
 }
 .isScrollTop{
-  box-shadow: 2px 0 3px rgba(99, 99, 99, 0.3);
+  box-shadow: 2px 0 5px rgba(99, 99, 99, 0.3);
 }
 .head-nav {
   user-select: none;
@@ -61,6 +61,7 @@ export default {
   width: 100%;
   top: 0;
   position: fixed;
+  z-index: 99;
   border-bottom: 1px solid rgba(99, 99, 99, 0.3);
   margin-bottom: 10px;
   background-color: rgb(250, 250, 250);

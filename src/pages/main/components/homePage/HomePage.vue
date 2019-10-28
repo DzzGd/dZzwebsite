@@ -9,38 +9,9 @@
       </homepage-slide>
     </homepage-carousel>
 
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
-    <div>haha</div>
+    <homepage-article>
+      
+    </homepage-article>
   </div>
 </template>
 
@@ -48,12 +19,14 @@
 import HomepageCarousel from './childCmps/HomepageCarousel'
 import HomepageSlide    from './childCmps/HomepageSlide'
 import HomepageContent  from './childCmps/HomepageContent'
+import HomepageArticle  from './childCmps/HomepageArticle'
 export default {
   name: "HomePage.vue",
   components: {
-    HomepageCarousel,
     HomepageSlide,
-    HomepageContent
+    HomepageContent,
+    HomepageArticle,
+    HomepageCarousel
   }
 };
 </script>
@@ -61,7 +34,6 @@ export default {
 <style scoped lang="scss">
 .home-page {
   min-height: 600px;
-  padding : 10px;
   overflow: hidden;
   border-right: 1px solid #eee;
   border-left : 1px solid #eee;

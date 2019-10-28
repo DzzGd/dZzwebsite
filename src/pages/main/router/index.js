@@ -21,10 +21,10 @@ const routes = [
     path: '/FriendShare',
     component: resolve => require(['@components/friendShare/FriendShare'], resolve)
   },
-  {
-    path: '/Entertainment',
-    component: resolve => require(['@components/entertainment/Entertainment'], resolve)
-  },
+  // {
+  //   path: '/Entertainment',
+  //   component: resolve => require(['@components/entertainment/Entertainment'], resolve)
+  // },
   {
     path: '/FriendLink',
     component: resolve => require(['@components/friendLink/FriendLink'], resolve)
@@ -36,6 +36,10 @@ const routes = [
   {
     path: '/MessageBoard',
     component: resolve => require(['@components/messageBoard/MessageBoard'], resolve)
+  },
+  {
+    path: '/WriteArticle',
+    component: resolve => require(['@components/writeArticle/WriteArticle'], resolve)
   }
 ]
 const router = new VueRouter({

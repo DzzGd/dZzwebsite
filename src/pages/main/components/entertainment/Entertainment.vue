@@ -1,10 +1,19 @@
 <template>
-  <div class="entertainment">Entertainment</div>
+  <div class="entertainment">
+  </div>
 </template>
 
 <script>
 export default {
-  name: "Entertainment"
+  name: "Entertainment",
+  data() {
+    return {
+
+    }
+  },
+  components: {
+    MarkDown
+  }
 };
 </script>
 

@@ -44,7 +44,7 @@ export default {
 }
 .side-adver {
   .adver-float {
-    width : 200px;
+    width : 190px;
     bottom: 0;
     position: fixed;
     top : 80px;

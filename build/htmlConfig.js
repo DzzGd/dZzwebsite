@@ -3,6 +3,7 @@ const path = require('path')
 function config(title, name, arr) {
   return new htmlWebpackPlugin({
     template: path.join(__dirname, '../src/views', name) + '.html',
+    // filename: name + '.html', 
     filename: name, 
     hash  : true,
     title : title,

@@ -60,6 +60,8 @@ export default {
         onceNum    : 6
       },
       preIndex: null,
+      clickLikesNum: {},
+      clickDislikesNum: {},
       updateDebounce: function(){}
     };
   },
@@ -89,29 +91,34 @@ export default {
       this.preIndex = index
     }
       if (type === 0) {
+        this.clickLikesNum[_id]    = (this.clickLikesNum[_id] || 0) + 1
         this.leaveMessage[index].likes ++
       } else {
+        this.clickDislikesNum[_id] = (this.clickDislikesNum[_id] || 0) + 1
         this.leaveMessage[index].dislikes ++
       }
-      this.updateDebounce(_id, index)
+      this.updateDebounce(_id)
     },
-    update_to_service(_id, index) { //将喜欢和不喜欢的数量提交到服务器
+    update_to_service(_id) { //将喜欢和不喜欢的数量提交到服务器
       // updateInfo: _id, likes, dislikes
       let updateInfo = {
         _id,
-        likes: parseInt(this.leaveMessage[index].likes),
-        dislikes: parseInt(this.leaveMessage[index].dislikes),
+        likes: parseInt(this.clickLikesNum[_id]),
+        dislikes: parseInt(this.clickDislikesNum[_id]) || 0,
       }
+      this.clickLikesNum[_id] = 0
+      this.clickDislikesNum[_id] = 0
       homepageService.updateLikesOrDislikes(updateInfo, res => {
-        
+        if (!res)this.$message.success('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..')
       }, err => {
-        this.$message.error('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..', err)
+        this.$message.error('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..' + err)
       })
     },
     get_leave_message() { // 获取留言数据
       // 请求留言数据
       homepageService.getLeaveMessage(this.pageInfo, data => {
         this.leaveMessage = data
+        this.clickNum
       }, err => {
         this.$message.error('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..')
       })
