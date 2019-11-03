@@ -11,7 +11,11 @@
 
           <!-- 主体 -->
           <el-main class="el-main">
-            <router-view></router-view>
+            <transition name="body-transition" mode="out-in">
+              <keep-alive exclude="ArticleDetail">
+                <router-view></router-view>
+              </keep-alive>
+            </transition>
           </el-main>
 
           <!-- 侧边信息广播 -->
@@ -92,14 +96,25 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.body-transition-enter-active,
+.body-transition-leave-active {
+  transition: all 0.3s;
+}
+.body-transition-enter,
+.body-transition-leave-to {
+  opacity: 0;
+  transform: scale(.99)
+}
+</style>
 <style lang="scss">
 @media screen and (min-width: 320px) and (max-width: 992px) {
   .dz-leave-message {
     display: block !important;
   }
 }
-@media screen and (max-width: 570px){
-  .is-vertical{
+@media screen and (max-width: 570px) {
+  .is-vertical {
     padding-top: 60px !important;
   }
 }
@@ -116,7 +131,7 @@ body {
   .is-vertical {
     padding-top: 80px;
   }
-  .main-body{
+  .main-body {
     max-width: 1400px;
     margin: 0 auto;
   }

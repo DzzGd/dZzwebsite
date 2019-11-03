@@ -16,6 +16,7 @@ function getIPAdress() {
   }
 }
 module.exports = webpackMerge(baseConfig, {
+  mode  : "development",
   devServer: {
     // contentBase: '/',
     // publicPath: '/',

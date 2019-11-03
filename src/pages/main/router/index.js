@@ -18,6 +18,10 @@ const routes = [
     component: resolve => require(['@components/techShare/TechShare'], resolve)
   },
   {
+    path: '/TechShare/Articles/:id',
+    component: resolve => require(['@components/articleDetail/ArticleDetail'], resolve)
+  },
+  {
     path: '/FriendShare',
     component: resolve => require(['@components/friendShare/FriendShare'], resolve)
   },
@@ -44,7 +48,7 @@ const routes = [
 ]
 const router = new VueRouter({
   routes,
-  mode: 'history'
+  mode: 'hash'
 })
 
 export default router

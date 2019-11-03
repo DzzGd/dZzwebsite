@@ -53,10 +53,13 @@ export default {
   mounted() {
     this.init()
   },
+  beforeDestroy() {
+    this.$bus.$off('resizeWindow',this.flexiblePosition)
+  },
   methods: {
     init() {
       this.setDomStructure()
-      this.setDomMove()
+      // this.setDomMove()
     },
     setDomMove() {
       this.timer = setInterval(() => {

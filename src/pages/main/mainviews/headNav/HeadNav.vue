@@ -18,11 +18,15 @@ export default {
   name: "HeadNav",
   data() {
     return {
-      scrollTop: false
+      scrollTop: false,
     }
   },
   mounted() {
     this.$bus.$on('windowScroll',this.adjustHeadNav)
+  },
+  
+  beforeDestroy() {
+    this.$bus.$off('windowScroll',this.adjustHeadNav)
   },
   methods: {
     adjustHeadNav(scroll) {

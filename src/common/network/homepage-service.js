@@ -1,10 +1,9 @@
 const axios = require('./axios')
 const qs = require('querystring')
-
 export default {
   isLoged(resolve, reject) {
     axios.request({
-      url: '/api/front/user/isLogined',
+      url: '/user/isLogined',
       method: 'get'
     })
       .then(res => {
@@ -17,11 +16,11 @@ export default {
   },
   logOut(resolve, reject) {
     axios.request({
-      url: 'api/front/user/logOut',
+      url: '/user/logOut',
       method: 'get'
     })
       .then(res => {
-        console.log(res)
+        
         if (res.data.status === 1) resolve(true)
         if (res.data.status === 0) resolve(false)
       })
@@ -31,7 +30,7 @@ export default {
   },
   sendLeaveMessage(data, resolve, reject) {
     axios.request({
-      url: 'api/front/interactive/leaveMessage',
+      url: '/interactive/leaveMessage',
       method: 'post',
       data: qs.stringify(data)
     })
@@ -45,7 +44,7 @@ export default {
   },
   getUserInfo(resolve, reject) {
     axios.request({
-      url: 'api/front/user/isLogined',
+      url: '/user/isLogined',
       method: 'get',
     })
       .then(res => {
@@ -58,12 +57,12 @@ export default {
   },
   getLeaveMessage(params, resolve, reject) {
     axios.request({
-      url: 'api/front/interactive/getLeaveMessage',
+      url: '/interactive/getLeaveMessage',
       method: 'get',
       params
     })
       .then(res => {
-        if (res.data.status === 1) resolve(res.data.leaveMessage)
+        if (res.data.status === 1) resolve(res.data)
       })
       .catch(err => {
         reject(err)
@@ -71,7 +70,7 @@ export default {
   },
   updateLikesOrDislikes(data, resolve, reject) {
     axios.request({
-      url   : 'api/front/interactive/upDateLeaveMessage',
+      url   : '/interactive/upDateLeaveMessage',
       method: 'post',
       data : qs.stringify(data)
     })
@@ -82,5 +81,99 @@ export default {
       .catch(err => {
         reject(err)
       })
-  }
+  },
+  sendArticle(data, resolve, reject) {
+    axios.request({
+      url   : '/interactive/sendArticle',
+      method: 'post',
+      data : qs.stringify(data)
+    })
+      .then(res => {
+        if (res.data.status === 500) reject(err)
+        if (res.data.status === 1) resolve(true)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  },
+  getRankArticles(resolve, reject) {
+    axios.request({
+      url   : '/interactive/getRankArticles',
+      method: 'get',
+    })
+      .then(res => {
+        if (res.data.status === 500) reject(err)
+        if (res.data.status === 1) resolve(res.data.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  },
+  getHotArticles(params, resolve, reject) {
+    axios.request({
+      url   : '/interactive/getHotArticles',
+      method: 'get',
+      params
+    })
+      .then(res => {
+        if (res.data.status === 500) reject(err)
+        if (res.data.status === 1) resolve(res.data)
+      })
+      .catch(err => {
+        reject(err)
+      })
+  },
+  getSingleCategory(category, currentPage) {
+    return axios.request({
+      url   : '/interactive/getSingleCategory',
+      method: 'get',
+      params: {
+        category,
+        currentPage
+      }
+    })
+  },
+  getArticleDetail(articleId) {
+    return axios.request({
+      url   : '/interactive/getArticleDetail',
+      method: 'get',
+      params: {
+        articleId
+      }
+    })
+  },
+  sendComment(data, resolve, reject) {
+    return axios.request({
+      url   : '/interactive/sendComment',
+      method: 'post',
+      data: qs.stringify(data)
+    }).then(res => {
+      if (res.status === 500) return reject('服务器错误')
+      resolve(res)
+    }).catch(err => {
+      console.log(err)
+      reject(err)
+    })
+  },
+  getRelated(data) {
+    return axios.request({
+      url   : '/interactive/getRelated',
+      method: 'get',
+      params: data
+    })
+  },
+  increseWatch(arcitleId) {
+    return axios.request({
+      url   : '/interactive/increseWatch',
+      method: 'get',
+      params: { arcitleId }
+    })
+  },
+  // getComments(articleId) {
+  //   return axios.request({
+  //     url   : '/interactive/getComments',
+  //     method: 'get',
+  //     params: { articleId }
+  //   })
+  // },
 }

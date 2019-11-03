@@ -1,17 +1,17 @@
 <template>
   <div class="homepage-tabs">
     <h1 class="title">
-      <span>{{'热门分类'}}</span>
+      <span>热门分类</span>
       <span class="more">
         <a href="javascript:void(0)">MORE...</a>
       </span>
     </h1>
-    <el-tabs v-model="activeName" @tab-click="handleClick" class="el-tabs">
-      <el-tab-pane v-for="item in arr" 
-                   :key="item._id"
-                   :label="item.label" :name="item._id">
+    <el-tabs v-model="activeCategory" @tab-click="handleClick" class="el-tabs">
+      <el-tab-pane v-for="item in hotCategory" 
+                   :key="item.category"
+                   :label="item.category" :name="item.category">
         <div class="content">
-          <p v-for="(i,index) in item.content" :key="i._id">{{index + 1}}. {{i._con}}&#x1F525;&#x1F525;</p>
+          <p v-for="(i,index) in item.rank" :key="i._id">{{index + 1}}. {{i.title}}<span v-for="j in (5-index)" :key="j">&#x1F525;</span></p>
         </div>
       </el-tab-pane>
     </el-tabs>
@@ -89,16 +89,27 @@ export default {
           }
         ];
       }
+    },
+    hotCategory:{
+      type: Array,
+      default() {
+        return []
+      }
     }
   },
   data() {
     return {
-      activeName: '1'
+      activeCategory: this.a
     };
   },
   methods: {
     handleClick() {
       console.log(1);
+    }
+  },
+  watch: {
+    hotCategory(val, oldVal) {
+      this.activeCategory = val[0].category
     }
   }
 };
@@ -137,8 +148,6 @@ export default {
     padding: 5px 10px;
     .content{
       p{
-    // font-size: 18px;
-        // height: 24px;
         line-height: 24px;
 
         &:nth-child(1) {

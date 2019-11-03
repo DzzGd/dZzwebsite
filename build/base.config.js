@@ -9,12 +9,13 @@ function resolve(targetPath) {
   return path.join(__dirname, '../', targetPath)
 }
 module.exports = {
-  mode  : "development",
+  
   entry : entryConfig,
   output: {
     path      : resolve('dist'),
     filename  : 'js/[name].js',
-    publicPath: '/'
+    publicPath: '/',
+    globalObject: 'this'
   },
   resolve: {
     alias: {
@@ -32,10 +33,18 @@ module.exports = {
     extensions: ['.js', '.vue', '.less', '.scss', '.css']
   },
   externals: {
-    'jquery': 'window.Jquery'
+    // 'jquery': 'window.Jquery'
   },
   module: {
     rules: [
+      {
+        test: /\.worker\.js$/,
+        // use: ['style-loader', 'css-loader']
+        use: {
+          loader: 'worker-loader',
+          options: {inline: true, name:'js/[name]?[hash:8].js'}
+        }
+      },
       {
         test: /\.css$/,
         // use: ['style-loader', 'css-loader']

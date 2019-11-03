@@ -4,19 +4,19 @@
              :model="form" 
              label-width="80px" 
              :rules="rules">
-      <el-form-item label="标题" class="title" prop="title">
+      <el-form-item label="标题" class="write-title" prop="title">
         <el-input v-model="form.title"></el-input>
       </el-form-item>
 
       <el-divider></el-divider>
 
-      <el-form-item label="简介" class="title" prop="brief">
+      <el-form-item label="简介" class="write-title" prop="brief">
         <el-input type="textarea" v-model="form.brief"></el-input>
       </el-form-item>
 
       <el-divider></el-divider>
 
-      <el-form-item label="分类" class="title category" prop="category">
+      <el-form-item label="分类" class="write-title category" prop="category">
         <el-radio-group v-model="form.category"
                         class="category-group">
           <el-radio label="html">html</el-radio>
@@ -27,7 +27,7 @@
 
       <el-divider></el-divider>
 
-      <el-form-item label="标签" class="title">
+      <el-form-item label="标签" class="write-title">
         <div class="container">
 
           <div class="tags">
@@ -96,34 +96,32 @@ export default {
       tags: ['vue', 'javascript'],
       selectTagsNum: 5,
       select: [
-        "vue",
-        "html",
-        "css",
-        "js",
+        "Vue",
+        "HTML",
+        "CSS",
+        "JavaScript",
         "webpack",
-        "node",
-        "react",
-        "express",
-        "koa",
+        "Node",
+        "React",
+        "Express",
+        "Koa",
         "ssr",
-        "vue-cli",
-        "typescript",
-        "javascript"
+        "Vue-Cli",
+        "TypeScript"
       ],
-      tempSelect:[
-        "vue",
-        "html",
-        "css",
-        "js",
+      tempSelect: [
+        "Vue",
+        "HTML",
+        "CSS",
+        "JavaScript",
         "webpack",
-        "node",
-        "react",
-        "express",
-        "koa",
+        "Node",
+        "React",
+        "Express",
+        "Koa",
         "ssr",
-        "vue-cli",
-        "typescript",
-        "javascript"
+        "Vue-Cli",
+        "TypeScript"
       ],
       form: {
         title: "",
@@ -166,9 +164,7 @@ export default {
 <style scoped lang="scss">
 .write-article-info {
   background-color: #ffffff;
-  padding-top: 15px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding: 15px 16px 10px 0;
   .category-group label{
     color: #e60023 !important;
   }
@@ -199,7 +195,6 @@ export default {
 }
 
 .select-tags-enter, .select-tags-leave-to{
-  // transform: translate(5px,0)
   opacity: 0;
 }
 .select-tags-enter-active, .select-tags-leave-active{
@@ -215,7 +210,7 @@ export default {
 </style>
 
 <style lang="scss">
-.title {
+.write-title {
   label {
     font-size: 18px;
     color: #00965e;

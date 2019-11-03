@@ -56,7 +56,7 @@ export default {
       leaveMessage: [],
       totalPages  : null,
       pageInfo    : { 
-        requestPage: 1,
+        requestPage: 0,
         onceNum    : 6
       },
       preIndex: null,
@@ -108,6 +108,7 @@ export default {
       }
       this.clickLikesNum[_id] = 0
       this.clickDislikesNum[_id] = 0
+      // 发送清零, 新的计算
       homepageService.updateLikesOrDislikes(updateInfo, res => {
         if (!res)this.$message.success('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..')
       }, err => {
@@ -115,10 +116,12 @@ export default {
       })
     },
     get_leave_message() { // 获取留言数据
+      this.pageInfo.requestPage++
       // 请求留言数据
       homepageService.getLeaveMessage(this.pageInfo, data => {
-        this.leaveMessage = data
-        this.clickNum
+        this.leaveMessage = data.leaveMessage.data
+        this.totalPages = data.leaveMessage.totalPages
+        this.pageInfo.requestPage = data.leaveMessage.currentPage
       }, err => {
         this.$message.error('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..')
       })

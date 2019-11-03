@@ -7,7 +7,9 @@ module.exports = {
       timeout: 5000,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
-      }
+      },
+      baseURL: '/api/front'
+      // baseUrl: '127.0.0.1:5200/front'
     })
     return instance
   },
