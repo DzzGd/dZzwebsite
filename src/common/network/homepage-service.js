@@ -20,7 +20,7 @@ export default {
       method: 'get'
     })
       .then(res => {
-        
+
         if (res.data.status === 1) resolve(true)
         if (res.data.status === 0) resolve(false)
       })
@@ -70,9 +70,9 @@ export default {
   },
   updateLikesOrDislikes(data, resolve, reject) {
     axios.request({
-      url   : '/interactive/upDateLeaveMessage',
+      url: '/interactive/upDateLeaveMessage',
       method: 'post',
-      data : qs.stringify(data)
+      data: qs.stringify(data)
     })
       .then(res => {
         if (res.data.status === 1) resolve(true)
@@ -84,12 +84,13 @@ export default {
   },
   sendArticle(data, resolve, reject) {
     axios.request({
-      url   : '/interactive/sendArticle',
+      url: '/interactive/sendArticle',
       method: 'post',
-      data : qs.stringify(data)
+      data: qs.stringify(data)
     })
       .then(res => {
-        if (res.data.status === 500) reject(err)
+        if (res.data.status === 500) reject()
+        if (res.data.status === 2) reject()
         if (res.data.status === 1) resolve(true)
       })
       .catch(err => {
@@ -98,7 +99,7 @@ export default {
   },
   getRankArticles(resolve, reject) {
     axios.request({
-      url   : '/interactive/getRankArticles',
+      url: '/interactive/getRankArticles',
       method: 'get',
     })
       .then(res => {
@@ -111,7 +112,7 @@ export default {
   },
   getHotArticles(params, resolve, reject) {
     axios.request({
-      url   : '/interactive/getHotArticles',
+      url: '/interactive/getHotArticles',
       method: 'get',
       params
     })
@@ -125,7 +126,7 @@ export default {
   },
   getSingleCategory(category, currentPage) {
     return axios.request({
-      url   : '/interactive/getSingleCategory',
+      url: '/interactive/getSingleCategory',
       method: 'get',
       params: {
         category,
@@ -135,7 +136,7 @@ export default {
   },
   getArticleDetail(articleId) {
     return axios.request({
-      url   : '/interactive/getArticleDetail',
+      url: '/interactive/getArticleDetail',
       method: 'get',
       params: {
         articleId
@@ -144,7 +145,7 @@ export default {
   },
   sendComment(data, resolve, reject) {
     return axios.request({
-      url   : '/interactive/sendComment',
+      url: '/interactive/sendComment',
       method: 'post',
       data: qs.stringify(data)
     }).then(res => {
@@ -157,23 +158,74 @@ export default {
   },
   getRelated(data) {
     return axios.request({
-      url   : '/interactive/getRelated',
+      url: '/interactive/getRelated',
       method: 'get',
       params: data
     })
   },
-  increseWatch(arcitleId) {
+  increseWatch(articleId) {
     return axios.request({
-      url   : '/interactive/increseWatch',
+      url: '/interactive/increseWatch',
       method: 'get',
-      params: { arcitleId }
+      params: { articleId }
     })
   },
-  // getComments(articleId) {
-  //   return axios.request({
-  //     url   : '/interactive/getComments',
-  //     method: 'get',
-  //     params: { articleId }
-  //   })
-  // },
+
+  getNewsList(type, page, resolve, reject) {
+    return axios.request({
+      url: '/interactive/getNewsList',
+      method: 'get',
+      params: { type, page }
+    }).then(res => {
+      if (res.data.status !== 1) return reject()
+      resolve(JSON.parse(res.data.data))
+    }).catch(err => reject(err))
+  },
+
+  getTagsCategory(tagCategory, resolve, reject) {
+    return axios.request({
+      url: '/interactive/gettagscategory',
+      method: 'get',
+      params: { tagCategory }
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  },
+
+  getTagNumber(resolve, reject) {
+    return axios.request({
+      url: '/interactive/gettagnumber',
+      method: 'get'
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  },
+
+  getCalendarData(start, end, resolve, reject) {
+    return axios.request({
+      url: '/interactive/getcalendardata',
+      method: 'get',
+      params: { start, end }
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  },
+  getGuessLike(resolve, reject) {
+    return axios.request({
+      url: '/interactive/getguesslike',
+      method: 'get'
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  },
+
+  getSearchData(type, currentPage, quantity, value, resolve, reject) {
+    return axios.request({
+      url: '/interactive/getsearchdata',
+      method: 'get',
+      params: { type, currentPage, quantity, value }
+    }).then(res => {
+      resolve(res.data.data)
+    }).catch(err => reject(err))
+  },
 }

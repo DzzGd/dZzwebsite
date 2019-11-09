@@ -4,13 +4,13 @@
       <article class="list-item" v-for="(item,index) in dataList" :key="item._id">
         <header class="item-header">
           <h2>
-            <a href>{{index+1}}. {{item.title}}</a>
+            <a :href="'/#/TechShare/Articles/'+item._id" @click.prevent="toDetail(item._id)">{{index+1}}. {{item.title}}</a>
           </h2>
         </header>
         <div class="item-body">
           <p>
             <span>{{item.brief}}</span>
-            <a href class="read-more" @click.prevent="toDetail(item._id)">阅读全文>></a>
+            <a :href="'/#/TechShare/Articles/'+item._id" class="read-more" @click.prevent="toDetail(item._id)">阅读全文>></a>
           </p>
         </div>
         <footer class="item-footer">

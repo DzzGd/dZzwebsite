@@ -25,6 +25,10 @@ const routes = [
     path: '/FriendShare',
     component: resolve => require(['@components/friendShare/FriendShare'], resolve)
   },
+  {
+    path: '/TechNews',
+    component: resolve => require(['@components/techNews/TechNews'], resolve)
+  },
   // {
   //   path: '/Entertainment',
   //   component: resolve => require(['@components/entertainment/Entertainment'], resolve)
@@ -44,6 +48,10 @@ const routes = [
   {
     path: '/WriteArticle',
     component: resolve => require(['@components/writeArticle/WriteArticle'], resolve)
+  },
+  {
+    path: '/SearchDetail',
+    component: resolve => require(['@components/searchDetail/SearchDetail'], resolve)
   }
 ]
 const router = new VueRouter({
@@ -51,4 +59,8 @@ const router = new VueRouter({
   mode: 'hash'
 })
 
+router.beforeEach((to, from, next) => {
+  document.documentElement.scrollTop = 0
+  next()
+})
 export default router

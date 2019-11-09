@@ -7,8 +7,11 @@
       <li>
         <router-link to="/TechShare">技术分享</router-link>
       </li>
-      <li>
+      <!-- <li>
         <router-link to="/FriendShare">大家分享</router-link>
+      </li> -->
+      <li>
+        <router-link to="/TechNews">实时</router-link>
       </li>
       <!-- <li>
         <router-link to="/Entertainment">娱乐</router-link>
@@ -41,13 +44,11 @@ export default {
     height: 80px;
     box-sizing: border-box;
     border-bottom: 4px solid transparent;
-
     &:hover {
       border-bottom: 4px solid #40a0ff96;
     }
     a {
       line-height: 80px;
-
       color: #52a7fc;
       &:hover {
         color: #0080ff;

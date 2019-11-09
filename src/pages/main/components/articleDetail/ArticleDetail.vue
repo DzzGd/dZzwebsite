@@ -24,7 +24,7 @@
 
     <article-related></article-related>
     <article-comment :parent-article-comments="articleComments"></article-comment>
-  </div>
+  </div> 
 </template>
 
 <script>
@@ -68,6 +68,8 @@ export default {
         this.articlePre = this.articleData.pre
         this.articleNext = this.articleData.next
       })
+      this.increseWatch()
+      // document.documentElement.scrollTop ? document.documentElement.scrollTop = 0 : document.body.scrollTop = 0
     },
     getWorkerParse() { //监听worker
       worker.addEventListener("message", e => {
@@ -79,7 +81,7 @@ export default {
       worker.postMessage(msg);
     },
     goBack() {
-      this.$router;
+      window.history.go(-1)
     },
     getWorker() {
       return new Promise((resolve, reject) => {
@@ -108,8 +110,15 @@ export default {
         this.$router.replace({path:'/TechShare/Articles/' + this.articleNext._id})
       }
       this.articleLoading = true
-      this.init()
     },
+    increseWatch() {
+      service.increseWatch(this.articleId)
+    },
+  },
+  watch:{
+    '$route': function (newVal, oldVal) {
+      this.init()
+    }
   }
 };
 </script>

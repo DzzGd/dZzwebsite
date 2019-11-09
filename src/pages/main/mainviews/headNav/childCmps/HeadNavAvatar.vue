@@ -39,7 +39,8 @@ export default {
       menuList: [
         { name_CN: "首页"   , name_EN: "HomePgae"      },
         { name_CN: "技术分享", name_EN: "TechShare"     },
-        { name_CN: "大家分享", name_EN: "FriendShare"   },
+        // { name_CN: "大家分享", name_EN: "FriendShare"   },
+        { name_CN: "实时"   , name_EN: "TechNews" },
         { name_CN: "写文章"  , name_EN: "WriteArticle"   },
         // { name_CN: "娱乐"   , name_EN: "Entertainment" },
         { name_CN: "友情链接", name_EN: "FriendLink"    }
@@ -48,7 +49,8 @@ export default {
         HomePgae   : ["/HomePage"   , "el-icon-menu"   ],
         TechShare  : ["/TechShare"  , "el-icon-setting"],
         FriendShare: ["/FriendShare", "el-icon-edit"   ],
-        FriendLink : ["/FriendLink" , "el-icon-share" ],
+        FriendLink : ["/FriendLink" , "el-icon-share"  ],
+        TechNews : ["/TechNews" , "el-icon-share"  ],
         UserCenter : ["/UserCenter" , "el-icon-plus"   ],
         Entertainment: ["/Entertainment", "el-icon-star-on"],
         WriteArticle: ["/WriteArticle", "el-icon-edit"   ],

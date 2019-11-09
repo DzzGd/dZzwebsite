@@ -19,9 +19,10 @@
       <el-form-item label="分类" class="write-title category" prop="category">
         <el-radio-group v-model="form.category"
                         class="category-group">
-          <el-radio label="html">html</el-radio>
-          <el-radio label="css">css</el-radio>
-          <el-radio label="javascript">javascript</el-radio>
+          
+          <el-radio v-for="categoryItem in categoryList"
+                    :key="categoryItem"
+                    :label="categoryItem">{{categoryItem}}</el-radio>
         </el-radio-group>
       </el-form-item>
 
@@ -38,8 +39,8 @@
                       @close="handleClose(item)">{{item}}
               </el-tag>
             </transition-group>
-
           </div>
+
           <el-dropdown trigger="click" placement="top">
 
             <el-button type="success" size="small" class="add-tag">
@@ -71,7 +72,9 @@
           </el-dropdown>
         </div>
       </el-form-item>
+
       <el-divider></el-divider>
+
     </el-form>
   </div>
 </template>
@@ -93,7 +96,7 @@ export default {
           { required: true, message: '至少选择一个分类', trigger: 'change' }
         ]
       },
-      tags: ['vue', 'javascript'],
+      categoryList:['HTML', 'CSS', 'JavaScript', 'Vue', 'Node', 'webpack', '其他'],
       selectTagsNum: 5,
       select: [
         "Vue",
@@ -139,7 +142,8 @@ export default {
     },
     serachInput() { // 搜索标签输入响应事件
       this.select = this.tempSelect.filter(value => {
-        return value.indexOf(this.selectInput) !== -1
+        value = value.toLowerCase()
+        return value.indexOf(this.selectInput.toLowerCase()) !== -1
       })
     },
     handleClose(tag) { //删除已选择标签

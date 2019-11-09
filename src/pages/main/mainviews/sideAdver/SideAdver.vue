@@ -23,11 +23,11 @@ export default {
     return {};
   },
   mounted() {
-    this.$bus.$on()
+    this.$bus.$on();
   },
   methods: {
     toMessageBoard() {
-      this.$router.push({path: '/MessageBoard'})
+      this.$router.push({ path: "/MessageBoard" });
     }
   },
   components: {
@@ -37,17 +37,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 1120px) {
   .side-adver {
     display: none;
   }
 }
 .side-adver {
   .adver-float {
-    width : 190px;
+    width: 190px;
     bottom: 0;
     position: fixed;
-    top : 80px;
+    top: 80px;
     padding: 1px 3px 0 3px;
     box-sizing: border-box;
     .title-text {

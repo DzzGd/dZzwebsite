@@ -14,9 +14,10 @@ function getIPAdress() {
       }
     }
   }
-}
+} 
 module.exports = webpackMerge(baseConfig, {
   mode  : "development",
+  devtool:"inline-source-map",
   devServer: {
     // contentBase: '/',
     // publicPath: '/',

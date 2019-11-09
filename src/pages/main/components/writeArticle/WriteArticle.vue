@@ -11,7 +11,6 @@
       <write-article-info ref="articleInfo"></write-article-info>
     </div>
     <mark-down @triggerContent="getContent" ref="articleContent"></mark-down>
-    <!-- <write-article-footer class="write-article-footer"></write-article-footer> -->
   </div>
 </template>
 <script>
@@ -160,6 +159,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .write-article {
+  margin-bottom: 5px;
   .write-article-header {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
     padding: 0.5rem 1rem;

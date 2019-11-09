@@ -4,7 +4,7 @@
       <h1 class="title">
         <span>{{title}}</span>
         <span class="more">
-          <a href="javascript:void(0)">MORE...</a>
+          <a href="/#/TechShare" @click.prevent="toTechShare">MORE...</a>
         </span>
       </h1>
       <el-col :xs="24" v-for="(item, index) in showList" :key="item._id" :sm="index===0?24:12">
@@ -23,8 +23,11 @@
 
               <el-col :xs="24" :sm="index===0?16:24" class="el-col">
                 <div class="body-container">
-                  <p class="body-content">{{item.brief}}</p>
-                  <a href class="readmore">阅读更多</a>
+                  <a :href="'/#/ArticleDetail/'+item._id"
+                     @click.prevent="toDetail(item._id)">
+                    <p class="body-content">{{item.brief}}</p>
+                    <span class="readmore">阅读更多</span>
+                  </a>
                 </div>
               </el-col>
             </el-row>
@@ -36,7 +39,7 @@
             </p>
             <p class="info">
               <span>{{item.author}}:</span>
-              <span>{{new Date(item.createTime).getTime() | dateFormat}}</span>
+              <span>{{new Date(item.createTime).getTime() | dateFormat('yyyy-MM-dd hh:mm')}}</span>
               <span>评论:{{100}}+</span>
               <span>阅读:{{item.clickhot}}</span>
             </p>
@@ -48,6 +51,7 @@
 </template>
 
 <script>
+import { METHODS } from 'http'
 export default {
   name: "HomepageContent",
   props: {
@@ -66,8 +70,15 @@ export default {
     return{
       colors: ["#e60023", "#52a7fc", "#67C23A"]
     }
+  },
+  methods: {
+    toDetail(id) {
+      this.$router.push({ path: 'TechShare/Articles/' + id})
+    },
+    toTechShare() {
+      this.$router.push('TechShare')
+    }
   }
-  
 };
 </script>
 
@@ -94,7 +105,6 @@ export default {
     border: 1px solid #eee;
     border-radius: 4px;
     border-bottom: 4px solid rgb(82, 167, 252);
-
     display: flex;
     justify-content: space-between;
     justify-items: center;
@@ -128,10 +138,6 @@ export default {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
-    cursor: pointer;
-    &:hover{
-      text-decoration: underline;
-    }
   }
   .body {
     font-size: 18px;
@@ -145,6 +151,7 @@ export default {
       .body-content {
         font-family: "黑体";
         font-size: 16px;
+        color: #555;
         line-height: 36px;
         display: -webkit-box;
         -webkit-line-clamp: 3;
@@ -152,6 +159,7 @@ export default {
         overflow: hidden;
         text-indent: 36px;
         padding-left: 10px;
+        word-break: break-all;
         cursor: pointer;
         &:hover{
           transition: .3s;

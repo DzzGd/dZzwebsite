@@ -37,6 +37,17 @@ var obj = {
 
 ## articleDetail
 
+在跳转不同文章详情时, 因为只是改变了路由的`/:id`文章编号, 因为复用问题整个组件没有重新加载, 解决办法是利用watch监听路由变化重新异步加载文章内容
+
+```js
+watch:{
+  '$route': function (newVal, oldVal) {
+    this.init()
+  }
+}
+```
+
+
 利用webworker APi创建了另一个线程来处理 `marked转字符串` 和 `highlight高亮`.
 
 但是在webpack环境中要做一些文件和路径上的处理.

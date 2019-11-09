@@ -6,10 +6,14 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@assets/css/base.css'
 import filterSet from './filter/filter'
+import VueLazyload from "vue-lazyload"
+// import BackToTop from '@commonCmps/backToTop/index'
 
-filterSet(Vue)
+filterSet(Vue) //设置过滤器
 Vue.prototype.$bus = new Vue() //事件总线
-Vue.use(ElementUI)
+Vue.use(VueLazyload, {preLoad:1.4, loading:require('@assets/images/lazyload/loading.gif'), error: require('@assets/images/lazyload/error.jpg'),attempt:1}) //懒加载
+Vue.use(ElementUI) //安装elementui
+
 new Vue({
   router,
   store,

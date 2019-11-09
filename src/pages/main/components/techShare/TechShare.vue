@@ -21,7 +21,7 @@
           <a href="javascript:void(0)">React</a>
         </el-menu-item>
       </el-menu>
-      <el-input placeholder="请输入内容" clearable>
+      <el-input placeholder="请输入内容" clearable v-model="keyword">
         <i
           slot="prefix"
           class="el-input__icon el-icon-search search-icon"
@@ -46,6 +46,7 @@ export default {
   name: "TechShare",
   data() {
     return {
+      keyword: '',
       categoryList:{
         CSS :{currentPage: 0, list: [], totalPage: 0},
         HTML:{currentPage: 0, list: [], totalPage: 0},
@@ -70,7 +71,14 @@ export default {
     loadMore() {
       this.getDataList(this.currentCategory)
     },
-    handleclcik(type) {
+    handleclcik() {
+      this.$router.push({
+        path: '/SearchDetail' ,
+        query: {
+          type: 'keyword',
+          value: this.keyword
+        } 
+      })
     },
     getDataList(category) {
       const page = ++this.categoryList[category].currentPage
@@ -110,7 +118,6 @@ export default {
   li {
     height: 42px;
     line-height: 42px;
-    flex: 0;
   }
 }
 .search-icon {

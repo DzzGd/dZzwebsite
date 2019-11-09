@@ -169,7 +169,6 @@ export default {
     border-radius: 50%;
     width: 30px;
     height: 30px;
-    line-height: 30px;
     text-align: center;
     cursor: pointer;
     &:active{
@@ -192,7 +191,6 @@ export default {
   .homepage-swiper {
     display: flex;
     flex-wrap: nowrap;
-
   }
 }
 </style>

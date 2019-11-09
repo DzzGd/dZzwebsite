@@ -1,10 +1,10 @@
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const path = require('path')
-function config(title, name, arr) {
+const env = process.env.NODE_ENV
+function config(title, name) {
   return new htmlWebpackPlugin({
     template: path.join(__dirname, '../src/views', name) + '.html',
-    // filename: name + '.html', 
-    filename: name, 
+    filename: env === 'production'? name + '.html' : name, 
     hash  : true,
     title : title,
     inject: 'body',
@@ -16,11 +16,5 @@ module.exports.arr = [
   config('首页 dZz'      , 'home' ),
   config('注册 Register' , 'register'),
   config('忘记密码 forget', 'forget'),
-  new htmlWebpackPlugin({
-    template: path.join(__dirname, '../src/views', 'index') + '.html',
-    hash  : true,
-    title : 'dDz shares haha',
-    inject: 'body',
-    chunks: ['index']
-  })
+  config('dDz shares haha', 'index')
 ]

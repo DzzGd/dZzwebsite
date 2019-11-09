@@ -1,34 +1,7 @@
-const axios = require('axios')
-
+const axios = require('../network/axios')
 module.exports = {
-  // 网络请求   
-  createAxios() {
-    const instance = axios.create({
-      timeout: 5000,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      baseURL: '/api/front'
-      // baseUrl: '127.0.0.1:5200/front'
-    })
-    return instance
-  },
   request(config) {
-    const ax = this.createAxios()
-    ax.interceptors.request.use(config => {
-      return config
-    }, err => {
-      alert('biubiubiu~失败了', err)
-    })
-    ax.interceptors.response.use(config => {
-      // if (config.data.status === 9) { 是否登录
-      //   this.doLogin()
-      // }
-      return config
-    }, err => {
-      alert('你是停机了吗~, 网络不通了', err)
-    })
-    return ax(config)
+    return axios.request(config)
   },
   // 数据验证, 合格 返回true  反之 为false
   validate(type, value) {
@@ -51,15 +24,16 @@ module.exports = {
   },
   getRedirectUrl(param) {
     // 如果跳转到登录页, 会带有原来的地址redirect,如果没有re直接跳到home
-    let urlParamsStr = window.location.search
-    let ret = null
-    if (urlParamsStr) {
-      ret = this.parseString(param, urlParamsStr)
-      // 虽然有参数 但不一定是redirect
-      ret = ret ? ret : ''
-    } else {
-      ret = 'home'
-    }
+    // let urlParamsStr = window.location.search
+    // let ret = null
+    // if (urlParamsStr) {
+    //   ret = this.parseString(param, urlParamsStr)
+    //   // 虽然有参数 但不一定是redirect
+    //   ret = ret ? ret : ''
+    // } else {
+    //   ret = ''
+    // }
+    let ret = ''
     return encodeURIComponent(ret)
   },
   // 统一登录处理并设置登录后的跳转路径
@@ -67,7 +41,7 @@ module.exports = {
     this.toTarget('login?redirect=' + encodeURIComponent(window.location.pathname.slice(1)))
   },
   goHome() {
-    window.location.href = '/home'
+    window.location.href = '/'
   },
   toTarget(url) {
     window.location.href = '/' + decodeURIComponent(url)

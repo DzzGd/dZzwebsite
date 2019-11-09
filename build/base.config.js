@@ -3,8 +3,8 @@ const VueLoaderPlugin  = require('vue-loader/lib/plugin')
 const htmlConfig       = require('./htmlConfig')
 const entryConfig      = require('./entry')
 const extractTextWebpackPlugin = require('extract-text-webpack-plugin')
-
-
+ 
+ 
 function resolve(targetPath) {
   return path.join(__dirname, '../', targetPath)
 }
@@ -69,10 +69,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['es2015']
-          }
+          loader: 'babel-loader'
         }
       },
       {
@@ -103,7 +100,7 @@ module.exports = {
         },
         'vue-vendor' : {
           name: 'vue-vendor',
-          test: /node_modules[\\/](vue|vue-router|vuex)[\\/]/,
+          test: /node_modules[\\/](vue|vue-router|vuex|vue-lazyload)[\\/]/,
           filename : 'js/vue-vendor.js',
           chunks   : 'initial',
           minSize  : 0,

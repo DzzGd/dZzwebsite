@@ -26,6 +26,9 @@
       <leave-message class="dz-leave-message"></leave-message>
       <!-- 底部 -->
       <footer-content></footer-content>
+      <back-to-top :duration="300">
+        <img src="~@assets/images/homepage/top.jpg" alt="">
+      </back-to-top>
     </el-container>
   </div>
 </template> 
@@ -37,6 +40,8 @@ import SideBroadcast from "@mainviews/sideBroadcast/SideBroadcast";
 import FooterContent from "@mainviews/footerContent/FooterContent";
 
 import LeaveMessage from "@commonCmps/leaveMessage/LeaveMessage";
+
+import BackToTop from "@commonCmps/backToTop/BackToTop"
 import homepageService from "@common/network/homepage-service";
 import { debounce, throttle } from "@common/utils/apptools";
 export default {
@@ -92,7 +97,8 @@ export default {
     SideAdver,
     SideBroadcast,
     FooterContent,
-    LeaveMessage
+    LeaveMessage,
+    BackToTop
   }
 };
 </script>
@@ -108,7 +114,10 @@ export default {
 }
 </style>
 <style lang="scss">
-@media screen and (min-width: 320px) and (max-width: 992px) {
+@media screen and (min-width: 320px) and (max-width: 991px) {
+  .main-body{
+    flex-wrap: wrap !important;
+  }
   .dz-leave-message {
     display: block !important;
   }
@@ -118,13 +127,9 @@ export default {
     padding-top: 60px !important;
   }
 }
-@media screen and (min-width: 768px) and (max-width: 992px) {
-  .dz-leave-message {
-    margin-right: 220px !important;
-  }
-}
+
 body {
-  background-color: rgb(245, 249, 255);
+  background-color: #E9EAED;
   .dz-leave-message {
     display: none;
   }

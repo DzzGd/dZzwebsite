@@ -138,7 +138,7 @@ class Forget {
 
   // 响应检测错误信息跳转和成功跳转
   responseDo(res) {
-    var res = res.data
+    res = res.data
     if (res.status === 1) {
       alert('修改成功')
       tool.toTarget('login')
@@ -148,7 +148,7 @@ class Forget {
   }
   // 响应得到问题
   responseDo1(res) {
-    var res = res.data
+    res = res.data
     if (res.exStatus === 0) {
       this.errTips(true, res.msg)
     } 
