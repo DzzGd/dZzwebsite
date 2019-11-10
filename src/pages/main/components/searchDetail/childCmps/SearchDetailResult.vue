@@ -1,5 +1,6 @@
 <template>
-  <div class="search-detail-result">
+  <div class="search-detail-result"  v-loading="loading">
+    <p v-show="articleList.length === 0" class="no-content">没有内容哦</p>
     <div class="search-result-list">
       <div class="search-result-item" v-for="item in articleList" :key="item._id">
         <div class="img-box">
@@ -25,7 +26,9 @@
               <use xlink:href="#icon-biaoqing" />
             </svg>
             <span>{{item.clickhot}}</span>
-            <span class="continue">继续阅读 >></span>
+            <a :href="'/#/TechShare/Articles'+item._id" @click.prevent="toDetail(item._id)">
+              <span class="continue">继续阅读 >></span>
+            </a>
           </footer>
         </div>
       </div>
@@ -39,20 +42,34 @@ export default {
     articleList: {
       type: Array,
       default() {
-        return []
+        return [];
       }
-    }
+    },
+    loading: false
   },
   data() {
-    return {};
+    return {
+
+    }
   },
-  methods: {}
+  methods: {
+    toDetail(id) {
+      this.$router.push({ path: "/TechShare/Articles/" + id });
+    }
+  }
 };
 </script>
 <style scoped lang='scss'>
+@import "@css/mixin";
 .search-detail-result {
+  min-height: 40px;
   border-top: 1px dashed #eee;
   background-color: #fff;
+  .no-content{
+    @include shc(20px, 40px, $blue);
+    height: 40px;
+    text-align: center;
+  }
   .search-result-list {
     .search-result-item {
       border-bottom: 1px dashed #eee;
@@ -68,30 +85,19 @@ export default {
       }
       .detail-box {
         word-break: break-all;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+        @include fj(space-between, column);
         header {
-          color: #0e90d2;
+          color: $blue;
           font-weight: bold;
           margin-bottom: 15px;
         }
         main {
-          line-height: 1.5;
-          font-size: 14px;
-          color: #999;
-          -webkit-box-orient: vertical;
-          -webkit-line-clamp: 3;
-          overflow: hidden;
-          word-break: break-all;
-          display: -webkit-box;
+          @include shc(14px, 1.5, #999);
+          @include linesEllipsis(3);
         }
-
         footer {
           height: 20px;
-          line-height: 20px;
-          font-size: 14px;
-          color: #999;
+          @include shc(14px, 20px, #999);
           span {
             margin-right: 10px;
           }
@@ -103,7 +109,7 @@ export default {
           }
           .continue {
             float: right;
-            color: rgb(0, 150, 94);
+            color: $green;
           }
         }
       }
@@ -127,14 +133,10 @@ export default {
         }
         .detail-box {
         }
-        footer{
+        footer {
           padding-bottom: 10px;
         }
       }
-    }
-  }
-  .search-result-item {
-    .img-box {
     }
   }
 }

@@ -7,7 +7,6 @@ import 'element-ui/lib/theme-chalk/index.css'
 import '@assets/css/base.css'
 import filterSet from './filter/filter'
 import VueLazyload from "vue-lazyload"
-// import BackToTop from '@commonCmps/backToTop/index'
 
 filterSet(Vue) //设置过滤器
 Vue.prototype.$bus = new Vue() //事件总线

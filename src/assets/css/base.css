@@ -18,7 +18,8 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+  vertical-align: baseline;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
@@ -60,10 +61,32 @@ img{
   clear  : both;
 }
 
+.clear {
+  zoom:1;
+}
+
 .l{
   float: left;
 }
 
 .r{
   float: right;
+}
+
+.margin-center {
+  margin: 0 auto;
+}
+
+.hide{
+  display: none;
+}
+
+.show{
+  display: block;
+}
+
+.ellipsis{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

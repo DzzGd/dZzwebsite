@@ -25,7 +25,7 @@
     </el-input>
     <p class="result">
       搜索结果
-      <span class="highlight">0</span> 条
+      <span class="highlight">{{ totalNum }}</span> 条
     </p>
   </div>
 </template>
@@ -40,6 +40,10 @@ export default {
     value: {
       type: String,
       default: ''
+    },
+    totalNum: {
+      type: Number,
+      default: 0
     }
   },
   data() {
@@ -53,7 +57,7 @@ export default {
     setValue() {
       let arr = []
       if (this.type === "time") {
-        let timeStr = new Date(this.value).toLocaleDateString().split("-");
+        let timeStr = new Date(parseInt(this.value)).toLocaleDateString().split("/");
         arr[0] = "时间";
         arr[1] = timeStr[0] + "-" + timeStr[1].padStart(2, 0);
         arr[2] = timeStr[2].padStart(2, 0);
@@ -66,10 +70,14 @@ export default {
       }
       this.valueArr = arr
     },
-
   },
   created() {
-
+    this.setValue()
+  },
+  watch: {
+    value() {
+      this.setValue()
+    }
   }
 };
 </script>

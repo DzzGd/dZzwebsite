@@ -1,0 +1,125 @@
+// 盗取部分bootstrap颜色, hiahiahia
+$blue : #52a7fc;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #e83e8c;
+$red: #dc3545; 
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #00965e;
+$teal: #20c997;
+$cyan: #17a2b8;
+$white: #fff;
+$gray: #6c757d;
+$gray-dark: #343a40;
+$primary: #007bff;
+$secondary: #6c757d;
+$success: #28a745;
+$info: #17a2b8;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #343a40;
+
+// 背景图片地址和大小
+@mixin bg($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@mixin borderRadius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+// 多行文字省略号
+@mixin  linesEllipsis($rows){
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $rows;
+  overflow: hidden;
+  word-break: break-all;
+}
+
+@mixin positionLT($type, $left, $top, $zIndex: 1) {
+  position: $type;
+  left: $left;
+  top: $top;
+  z-index: $zIndex;
+}
+@mixin positionLB($type, $left, $bottom, $zIndex: 1) {
+  position: $type;
+  left: $left;
+  bottom: $bottom;
+  z-index: $zIndex;
+}
+
+@mixin positionRB($type, $right, $bottom, $zIndex: 1) {
+  position: $type;
+  right: $right;
+  bottom: $bottom;
+  z-index: $zIndex;
+}
+@mixin positionRT($type, $right, $top, $zIndex: 1) {
+  position: $type;
+  right: $right;
+  top: $top;
+  z-index: $zIndex;
+}
+
+
+//定位全屏
+@mixin allcover{
+  position:absolute;
+  top:0;
+  right:0;
+}
+
+//定位上下左右居中
+@mixin center {  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+//定位上下居中
+@mixin pv {  
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+//定位左右居中
+@mixin ph {  
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+//宽高
+@mixin wh($width, $height){
+  width: $width;
+  height: $height;
+}
+
+//字体大小、行高、字体
+@mixin font($size, $line-height, $family: 'Microsoft YaHei') {  
+  font: #{$size}/#{$line-height} $family;
+}
+
+//字体大小，行高, 颜色
+@mixin shc($size, $height, $color, $family: 'Microsoft YaHei'){
+  font: #{$size}/#{$height} $family;
+  color: $color;
+}
+
+//flex 布局和 子元素 对其方式
+@mixin fj($type: space-between, $direction: row){
+  display: flex;
+  justify-content: $type;
+  flex-direction: $direction;
+}

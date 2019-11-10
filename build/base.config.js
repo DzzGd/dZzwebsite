@@ -24,6 +24,7 @@ module.exports = {
       '@pages' : resolve('src/pages'),
       '@common': resolve('src/common'),
       '@assets': resolve('src/assets'),
+      '@css'   : resolve('src/assets/css'),
       '@images': resolve('src/assets/images'),
       '@main'  : resolve('src/pages/main'),
       '@commonCmps': resolve('src/pages/main/commonCmps'),
@@ -97,7 +98,7 @@ module.exports = {
           minSize  : 0,
           minChunks: 1,
           priority : 10
-        },
+        }, 
         'vue-vendor' : {
           name: 'vue-vendor',
           test: /node_modules[\\/](vue|vue-router|vuex|vue-lazyload)[\\/]/,
@@ -113,7 +114,7 @@ module.exports = {
           chunks   : 'initial',
           filename : 'js/vendors.js',
           minSize  : 0,
-          minChunks: 1,
+          minChunks: 2,
           priority : 1
         },
         common     : {

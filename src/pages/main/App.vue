@@ -12,7 +12,7 @@
           <!-- 主体 -->
           <el-main class="el-main">
             <transition name="body-transition" mode="out-in">
-              <keep-alive exclude="ArticleDetail">
+              <keep-alive exclude="ArticleDetail,SearchDetail">
                 <router-view></router-view>
               </keep-alive>
             </transition>

@@ -4,16 +4,17 @@
     <div class="tags-container">
       <span class="tags"
             v-for="item in tagNumber"
-            :key="item.name">
+            :key="item.name"
+            @click="toSearch(item.name)">
         <span>{{item.name}}</span>
         <span>({{item.number}})</span>
-            
       </span>
     </div>
   </div>
 </template>
 
 <script>
+import service from '@common/network/homepage-service'
 export default {
   name: "SideBroadTags",
   props: {
@@ -21,20 +22,30 @@ export default {
       type: Array,
       default: []
     }
+  },
+  methods: {
+    toSearch(name) {
+      this.$router.push({
+        path: '/SearchDetail',
+        query: {
+          type: 'tag',
+          value: name
+        }
+      })
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
+@import '@css/mixin';
 .side-broad-tags {
   margin: 10px 10px 0;
   background-color: #fff;
-  border-radius: 3px;
+  @include borderRadius(3px);
   padding: 20px;
   .title {
-    font-size: 16px;
-    line-height: 40px;
-    color: rgb(72, 72, 72);
+    @include shc(16px, 40px, rgb(72, 72, 72));
     font-weight: normal;
     position: relative;
     margin-bottom: 10px;
@@ -43,12 +54,9 @@ export default {
       width: 80px;
     }
     &::after{
-      position: absolute;
-      width: 60px;
-      height: 2px;
+      @include positionLB(absolute, 0, 0);
+      @include wh(60px, 2px);
       content: "";
-      left: 0px;
-      bottom: 0px;
       background: rgb(0, 0, 0);
       transition: all 0.5s ease 0s;
     }
@@ -58,6 +66,7 @@ export default {
     display: flex;
     flex-wrap: wrap;
     .tags{
+      cursor: pointer;
       user-select: none;
       margin-right: 10px;
       margin-bottom: 5px;

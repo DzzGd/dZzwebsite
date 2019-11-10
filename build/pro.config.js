@@ -16,10 +16,10 @@ module.exports = webpackMerge(baseConfig, {
   plugins: [
     new webpack.BannerPlugin('最终版权归dZzGd © 所有, hiahia'),
     new CleanWebpackPlugin(),
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'server',
-    //   generateStatsFile: true,
-    //   statsOptions: {source: false},
-    // })
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'server',
+      generateStatsFile: true,
+      statsOptions: {source: false},
+    })
   ]
 })

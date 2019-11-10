@@ -60,7 +60,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.documentElement.scrollTop = 0
+  // document.documentElement.scrollTop = 0
   next()
 })
 export default router

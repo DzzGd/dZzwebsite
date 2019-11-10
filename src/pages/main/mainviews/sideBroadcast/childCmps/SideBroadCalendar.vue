@@ -3,11 +3,9 @@
     <h2 class="title">时间事件</h2>
     <el-calendar v-model="value">
       <template v-slot:dateCell="{date, data}">
-        <div @click="log(date, data)">
+        <div @click="toSearch(date, data)" class="day-conent">
           <p>{{data.day.slice(-2)}}</p>
-          <svg class="icon flag" 
-               aria-hidden="true"
-               v-if="arrShow.indexOf(data.day)!==-1">
+          <svg class="icon flag" aria-hidden="true" v-if="arrShow.indexOf(data.day)!==-1">
             <use xlink:href="#icon-tubiaozhizuomoban-" />
           </svg>
         </div>
@@ -27,8 +25,15 @@ export default {
     };
   },
   methods: {
-    log(a, b) {
-      console.log(a.getTime(), b);
+    toSearch(time, info) {
+      this.$router.push({ 
+        path: '/SearchDetail',
+        query: {
+          type: 'time',
+          value: time.getTime()
+        }
+      })
+      this.$emit('getTimeData', time)
     },
     getCalendarData(year, month) {
       if (!this.dateArr[year]) {
@@ -50,7 +55,7 @@ export default {
   created() {
     this.getCalendarData(this.value.getFullYear(), this.value.getMonth());
   },
-  watch: {
+  watch: { //监听日期变化
     value(newVal, OldVal) {
       let year = newVal.getFullYear();
       let month = newVal.getMonth();
@@ -59,48 +64,34 @@ export default {
   }
 };
 </script>
-<style lang="scss">
-  .side-broad-calendar{
-    .flag{
-      font-size: 14px;
-    }
-  }
-</style>
 <style scoped lang='scss'>
+@import "@css/mixin";
 .side-broad-calendar {
   margin: 10px 10px;
   .is-selected {
-    color: #1989fa;
+    color: $blue;
   }
   .title {
+    @include shc(16px, 40px, rgb(72, 72, 72));
     padding: 20px 20px 0 20px;
     background-color: #fff;
-    margin-bottom: 0 !important;
-    font-size: 16px;
-    line-height: 40px;
-    color: rgb(72, 72, 72);
     font-weight: normal;
     position: relative;
-    margin-bottom: 10px;
     border-bottom: 1px solid rgb(238, 238, 238);
     &:hover::after {
       width: 80px;
     }
     &::after {
-      position: absolute;
+      @include positionLB(absolute, 20px, 0);
       width: 60px;
       height: 2px;
       content: "";
-      left: 20px;
-      bottom: 0px;
       background: rgb(0, 0, 0);
       transition: all 0.5s ease 0s;
     }
-
   }
 }
 </style>
-
 <style lang="scss">
 .side-broad-calendar {
   .el-calendar {
@@ -108,6 +99,8 @@ export default {
       padding-bottom: 0 !important;
       border-bottom: none !important;
       .el-calendar__title {
+        font-family: "幼圆";
+        font-weight: bold;
       }
       .el-calendar__button-group {
         .el-button-group {
@@ -122,6 +115,21 @@ export default {
       .el-calendar-table {
         .el-calendar-day {
           height: 42px;
+          text-align: center;
+          position: relative;
+          .flag {
+            display: inline-block;
+            padding-top: 5px;
+            font-size: 14px;
+          }
+          .day-conent {
+            padding-top: 5px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+          }
         }
       }
     }

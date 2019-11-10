@@ -129,6 +129,7 @@ export default {
   cursor:not-allowed;
 }
 .article-detail {
+  background-color: #fff;
   .article-detail-nav {
     padding: 20px 10px 0 10px;
     margin-bottom: 10px;

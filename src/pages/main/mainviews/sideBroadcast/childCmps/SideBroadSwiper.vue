@@ -6,9 +6,7 @@
       </svg>
       <div class="container">
         <ul class="broadcast-list" ref="swiperEl">
-          <li class="broadcast-item">2019-11-01,本网站正式上线啦,快来围观</li>
-          <li class="broadcast-item">新文章发布了,vue路由守卫的使用</li>
-          <li class="broadcast-item">新文章发布了,vue路由守卫的使用</li>
+          <li class="broadcast-item" v-for="item in swiperInfo" :key="item">{{item}}</li>
         </ul>
       </div>
     </div>
@@ -31,11 +29,11 @@ export default {
   },
   data() {
     return {
-      swiperInfo: ['新文章发布', '功能更新', '当前最热'],
+      swiperInfo: ['2019-11-01,本网站正式上线啦,嘿嘿', '大家快来围观,望提出宝贵的意见', '后面会更新更多的文章', '也会增加新功能,和bug修复'],
       swiperEl: null,
       swiperElStyle: {},
       currentIndex: 1,
-      count: 3,
+      count: 0,
       timer: null
     };
   },
@@ -45,13 +43,14 @@ export default {
       this.setDomMove()
     },
     setDomStructure() { //获取初始信息, 添加首尾元素
+      this.count = this.swiperInfo.length
       this.swiperEl = this.$refs.swiperEl
       this.swiperElStyle = this.swiperEl.style
       let cloneFirst = this.swiperEl.lastChild.cloneNode(true)
       let cloneLast  = this.swiperEl.firstChild.cloneNode(true)
       this.swiperEl.appendChild(cloneLast)
       this.swiperEl.insertBefore(cloneFirst, this.swiperEl.firstChild)
-      console.log(this.swiperElStyle)
+      
       this.setPosition()
     },
     setPosition() {

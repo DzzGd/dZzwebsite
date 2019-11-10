@@ -1,7 +1,7 @@
 <template>
   <el-aside width="300px" class="side-broadcast">
     <div class="my-website">我的网站</div>
-    <side-broad-swiper :interval="2000"></side-broad-swiper>
+    <side-broad-swiper :interval="3000"></side-broad-swiper>
     <side-broad-myinfo></side-broad-myinfo>
     <side-broad-calendar></side-broad-calendar>
     <side-broad-tags :tag-number="tagNumber"></side-broad-tags>
