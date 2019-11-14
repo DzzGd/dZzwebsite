@@ -9,18 +9,19 @@
       </h1>
       <el-col :xs="24" v-for="(item, index) in showList" :key="item._id" :sm="index===0?24:12">
         <div class="homepage-content">
-          <div class="header" :style="{'color':colors[index]}">{{index+1}}. {{item.title}}</div>
+          <div class="header ellipsis" :style="{'color':colors[index]}">{{index+1}}. {{item.title}}</div>
 
           <div class="body clearfix">
             <el-row>
               <el-col :xs="24" :sm="index===0?8:0">
-                <img
-                  src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572026206195&di=f805325cd0e79923e8b25359df3bc418&imgtype=0&src=http%3A%2F%2Fwww.codingdict.com%2Fstatic%2Fassets%2Fimages%2Fdocument%2Fvuejs-cn-guide_51hNN97.jpg"
-                  alt
-                  class="body-img"
-                />
-              </el-col>
+                <div class="thumb">
+                  <img
+                    :src="item.imgUrl[0]?item.imgUrl[0]:'http://bpic.588ku.com/element_origin_min_pic/17/02/06/ed0c0ddc6271b0717ca64ffdf847eab6.jpg'"
+                    class="body-img"/>
+                </div>
 
+              </el-col>
+ 
               <el-col :xs="24" :sm="index===0?16:24" class="el-col">
                 <div class="body-container">
                   <a :href="'/#/ArticleDetail/'+item._id"
@@ -83,6 +84,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@css/mixin';
 @media screen and (max-width: 768px) {
   .body-content {
     padding-left: 0 !important;
@@ -90,6 +92,12 @@ export default {
   }
 }
 .container {
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+  transition: all .3s;
+  &:hover {
+    transform: translate(1px, -1px);
+    box-shadow: 0 3px 12px 1px rgba(0, 0, 0, 0.24);
+  }
   margin-top: 10px;
   border-top: 1px solid #eee;
   .inner {
@@ -128,38 +136,33 @@ export default {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   .header {
+    @include shc(16px, 1.5, $red, "新宋体");
     border-bottom: 1px solid #ebeef5;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     padding: 10px;
-    font-size: 16px;
-    font-family: "新宋体";
     font-weight: bold;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
   .body {
     font-size: 18px;
     padding: 10px;
     overflow: hidden;
     .body-img {
+      margin: 0 auto;
+      background-color: rgb(248, 248, 248);
       width: 100%;
+      object-fit: contain;
+      max-width: 500px;
+      max-height: 300px;
+      border: 6px solid white;
+      box-shadow: 1px 1px 5px #333333;
     }
 
     .body-container {
       .body-content {
-        font-family: "黑体";
-        font-size: 16px;
+        @include font(16px, 1.5, "黑体");
+        @include linesEllipsis(3);
         color: #555;
-        line-height: 36px;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
         text-indent: 36px;
         padding-left: 10px;
-        word-break: break-all;
         cursor: pointer;
         &:hover{
           transition: .3s;
@@ -178,18 +181,11 @@ export default {
   }
 
   .footer {
+    @include shc(16px, 1, rgb(172, 172, 172));
+    @include fj(space-around, row, center);
     border-top: 1px solid #ebeef5;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
     padding-top: 10px;
-    font-size: 16px;
-    color: rgb(172, 172, 172);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    justify-items: center;
     flex-wrap: wrap;
-
     .etag {
       padding-bottom: 4px;
       span{

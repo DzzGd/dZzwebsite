@@ -64,3 +64,7 @@ export function setStorage(name, body) { //存储到localStorage
 export function getStorage(name) { //从localStorage取出
   return JSON.parse(window.localStorage.getItem(name) || '{}')
 }
+
+export function delStorage(name) {
+  localStorage.removeItem(name)
+}

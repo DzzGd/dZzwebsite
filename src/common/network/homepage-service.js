@@ -104,7 +104,7 @@ export default {
     })
       .then(res => {
         if (res.data.status === 500) reject(err)
-        if (res.data.status === 1) resolve(res.data.data)
+        if (res.data.status === 1) resolve(res.data)
       })
       .catch(err => {
         reject(err)
@@ -226,6 +226,16 @@ export default {
       params: { type, currentPage, quantity, value }
     }).then(res => {
       resolve(res.data.data)
+    }).catch(err => reject(err))
+  },
+
+  imgUpload(formData, resolve, reject) {
+    return axios.request2({
+      url: '/articles',
+      method: 'post',
+      data: formData
+    }).then(res => {
+      resolve(res.data.imgUrl)
     }).catch(err => reject(err))
   },
 }

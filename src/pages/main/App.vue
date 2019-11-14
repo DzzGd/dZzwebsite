@@ -23,7 +23,7 @@
         </el-container>
       </div>
 
-      <leave-message class="dz-leave-message"></leave-message>
+      <leave-message class="dz-leave-message" :active-id="'leave-message2'"></leave-message>
       <!-- 底部 -->
       <footer-content></footer-content>
       <back-to-top :duration="300">
@@ -114,12 +114,18 @@ export default {
 }
 </style>
 <style lang="scss">
-@media screen and (min-width: 320px) and (max-width: 991px) {
+@media screen and(max-width: 991px) {
   .main-body{
     flex-wrap: wrap !important;
   }
   .dz-leave-message {
+    margin-right: 0 !important;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1120px){
+  .dz-leave-message {
     display: block !important;
+    margin-right: 305px !important;
   }
 }
 @media screen and (max-width: 570px) {
@@ -129,9 +135,10 @@ export default {
 }
 
 body {
-  background-color: #E9EAED;
+  background-color: rgb(240, 240, 240);
   .dz-leave-message {
     display: none;
+    margin-left: 5px;
   }
   .is-vertical {
     padding-top: 80px;

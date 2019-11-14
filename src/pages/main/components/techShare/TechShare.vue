@@ -21,27 +21,21 @@
           <a href="javascript:void(0)">React</a>
         </el-menu-item>
       </el-menu>
-      <el-input placeholder="请输入内容" clearable v-model="keyword">
-        <i
-          slot="prefix"
-          class="el-input__icon el-icon-search search-icon"
-          ontouchstart
-          @click="handleclcik"
-        ></i>
-      </el-input>
     </div>
+    <dz-input v-model="keyword" 
+              @clickEvent="handleclcik"
+              @keyupEvent="handleclcik"></dz-input>
+    <list-item :list-data="categoryList[currentCategory].list"></list-item>
+    <load-more @loadMore="loadMore" :hasMore="hasMore"></load-more>
 
-    <div class="tech-share-list">
-        <tech-share-list :data-list="categoryList[currentCategory].list"></tech-share-list>
-      <load-more @loadMore="loadMore" :hasMore="hasMore"></load-more>
-    </div>
   </div>
 </template>
 
 <script>
-import TechShareList from "./childCmps/TechShareList";
-import LoadMore from "@commonCmps/loadMore/LoadMore";
-import service  from "@common/network/homepage-service"
+import      ListItem from "@commonCmps/listItem/ListItem"
+import      LoadMore from "@commonCmps/loadMore/LoadMore"
+import       service from "@common/network/homepage-service"
+import       DzInput from "@commonCmps/dzInput/DzInput"
 export default {
   name: "TechShare",
   data() {
@@ -104,8 +98,9 @@ export default {
     }
   },
   components: {
-    TechShareList,
-    LoadMore
+    ListItem,
+    LoadMore,
+    DzInput
   }
 };
 </script>
@@ -120,16 +115,7 @@ export default {
     line-height: 42px;
   }
 }
-.search-icon {
-  cursor: pointer;
-  &:hover {
-    transform: scale(1.1);
-  }
 
-  &:active {
-    color: rgb(0, 110, 70);
-  }
-}
 .v-enter-active {
   transition: all 0.5s;
 }

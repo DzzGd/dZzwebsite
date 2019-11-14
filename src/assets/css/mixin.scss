@@ -112,14 +112,15 @@ $dark: #343a40;
 }
 
 //字体大小，行高, 颜色
-@mixin shc($size, $height, $color, $family: 'Microsoft YaHei'){
-  font: #{$size}/#{$height} $family;
+@mixin shc($size, $line-height, $color, $family: 'Microsoft YaHei'){
+  font: #{$size}/#{$line-height} $family;
   color: $color;
 }
 
 //flex 布局和 子元素 对其方式
-@mixin fj($type: space-between, $direction: row){
+@mixin fj($type: space-between, $direction: row, $verticle: center){
   display: flex;
   justify-content: $type;
   flex-direction: $direction;
+  justify-items: $verticle;
 }

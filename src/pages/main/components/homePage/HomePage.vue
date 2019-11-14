@@ -3,37 +3,37 @@
     <homepage-swiper-box></homepage-swiper-box>
 
     <div class="article-container">
-      <homepage-content title="热度文章" :show-list="techshare"></homepage-content>
+      <homepage-content title="热度文章" :show-list="topThree"></homepage-content>
     </div>
-
-    <!-- 大家说前三 -->
     <div class="article-container">
-      <homepage-content :title="'大家说'" :show-list="techshare"></homepage-content>
+      <list-item :list-data="other"></list-item>
     </div>
-
     <div class="article-container">
-      <homepage-tabs :hot-category="hotRank"></homepage-tabs>
+      <homepage-tabs :hot-category="tabControlArticles"></homepage-tabs>
     </div>
   </div>
 </template>
 
 <script>
 import HomepageSwiperBox from "./childCmps/HomepageSwiperBox";
-import HomepageContent from "./childCmps/HomepageContent";
-import HomepageTabs from "./childCmps/HomepageTabs";
-import service from "@common/network/homepage-service";
+import   HomepageContent from "./childCmps/HomepageContent";
+import      HomepageTabs from "./childCmps/HomepageTabs";
+import          ListItem from "@commonCmps/listItem/ListItem"
+import           service from "@common/network/homepage-service";
 export default {
   name: "HomePage.vue",
   data() {
     return {
-      techshare: null,
-      frindshare: {},
+      topThree: [],
+      other: [],
+      homepageArticles:{ page: 0, list :[] },
+      totalpages: 1,
       tags: {
         JavaScript: 1,
         HTML: 1,
         CSS: 1
       },
-      hotRank: null
+      tabControlArticles: null
     };
   },
   created() {
@@ -45,7 +45,9 @@ export default {
     getRankArticles() {
       service.getRankArticles(
         res => {
-          this.techshare = res.techshare;
+          this.homepageArticles.list.push(...res.data)
+          this.topThree = this.homepageArticles.list.slice(0, 3);
+          this.other    = this.homepageArticles.list.slice(3)
         },
         err => {
           console.log(err);
@@ -56,7 +58,7 @@ export default {
       service.getHotArticles(
         this.tags,
         res => {
-          this.hotRank = res.data;
+          this.tabControlArticles = res.data;
         },
         err => {
           setTimeout(() => {
@@ -69,7 +71,8 @@ export default {
   components: {
     HomepageSwiperBox,
     HomepageContent,
-    HomepageTabs
+    HomepageTabs,
+    ListItem
   }
 };
 </script>

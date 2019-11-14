@@ -4,26 +4,26 @@
     <div class="search-result-list">
       <div class="search-result-item" v-for="item in articleList" :key="item._id">
         <div class="img-box">
-          <img src="~@assets/images/homepage/crossfire.jpg" alt class="img" />
+          <img :src="item.imgUrl[0]?'http://bpic.588ku.com/element_origin_min_pic/17/02/06/ed0c0ddc6271b0717ca64ffdf847eab6.jpg':item.imgUrl[0]" alt class="img" />
         </div>
         <div class="detail-box">
           <header>{{item.title}}</header>
           <main>{{item.brief}}</main>
           <footer>
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-ren" />
+              <use xlink:href="#icon-icon-test" />
             </svg>
             <span>{{item.author}}</span>
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-rili" />
+              <use xlink:href="#icon-shijian" />
             </svg>
-            <span>{{new Date(item.createTime).getTime() | dateFormat("yyyy-MM-dd")}}</span>
+            <span>{{new Date(item.createTime).getTime() | dateFormat("yyyy-MM-dd hh:mm")}}</span>
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-uqur" />
+              <use xlink:href="#icon-pinglun1" />
             </svg>
             <span>99+</span>
             <svg class="icon" aria-hidden="true">
-              <use xlink:href="#icon-biaoqing" />
+              <use xlink:href="#icon-yuedu" />
             </svg>
             <span>{{item.clickhot}}</span>
             <a :href="'/#/TechShare/Articles'+item._id" @click.prevent="toDetail(item._id)">

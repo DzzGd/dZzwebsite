@@ -63,7 +63,7 @@
   </div>
 </template>
 <script>
-import ArticleCommentDialog from "./ArticleCommentDialog";
+import ArticleCommentDialog from "./ArticleCommentDialog"
 export default {
   name: 'ArticleComment',
   props: {
@@ -105,8 +105,8 @@ export default {
     },
     commentInputFocus(e) {
       //点击评论框
-      const target = e.target || window.event.srcElement;
-      target.parentNode.appendChild(this.dialogboxEl);
+      const target = e.target || window.event.srcElement
+      target.parentNode.appendChild(this.dialogboxEl)
       this.sendInfo('main', null, null)
     },
     sendInfo(type, to, nthfloor) {

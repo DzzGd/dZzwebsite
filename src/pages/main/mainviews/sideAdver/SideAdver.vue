@@ -8,7 +8,7 @@
 
       <img src="@images/contact/wechatImg.png" alt="wechat_QR-Code" class="wechat-img" />
 
-      <leave-message>
+      <leave-message :active-id="'leave-message1'">
         <el-button type="success" size="small" slot="check-look" @click="toMessageBoard">查看</el-button>
       </leave-message>
     </div>
@@ -23,7 +23,6 @@ export default {
     return {};
   },
   mounted() {
-    this.$bus.$on();
   },
   methods: {
     toMessageBoard() {

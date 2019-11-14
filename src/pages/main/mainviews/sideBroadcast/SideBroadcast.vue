@@ -1,11 +1,11 @@
 <template>
   <el-aside width="300px" class="side-broadcast">
-    <div class="my-website">我的网站</div>
+    <div class="my-website">-- dZzGd --</div>
     <side-broad-swiper :interval="3000"></side-broad-swiper>
-    <side-broad-myinfo></side-broad-myinfo>
+    <side-broad-recommend :like-data="likeData"></side-broad-recommend>
     <side-broad-calendar></side-broad-calendar>
     <side-broad-tags :tag-number="tagNumber"></side-broad-tags>
-    <side-broad-recommend :like-data="likeData"></side-broad-recommend>
+    <side-broad-myinfo></side-broad-myinfo>
     <side-broad-siteinfo></side-broad-siteinfo>
   </el-aside>
 </template>

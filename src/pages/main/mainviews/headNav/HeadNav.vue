@@ -73,7 +73,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   .logo {
-    background: url("~@images/logos/4.png") no-repeat -260px -232px;
+    background: url("~@images/logos/header_logo.png") no-repeat -260px -232px;
     position: relative;
     left: 0px;
     top: -6px;

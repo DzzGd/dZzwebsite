@@ -11,7 +11,11 @@
           :class="{'hover':index===currentHover}"
         >
           <span class="num l">{{index + 1}}</span>
-          <p class="text">{{item.title}}</p>
+          <p class="text">
+            <router-link :to="'/TechShare/Articles/'+item._id" class="link">
+            {{item.title}}
+            </router-link>
+            </p>
           <p class="brief l">{{item.brief}}</p>
         </li>
       </ul>
@@ -106,16 +110,19 @@ export default {
         height  : 20px;
         line-height: 20px;
         display: block;
-        color  : #555;
         margin-left: 24px;
         word-break: break-all;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        .link {
+          color  : #555;
+        }
       }
       .brief {
+        min-height: 54px;
         padding: 6px 0 0 24px;
-        color  : #555;
+        color  : #999;
         word-break: break-all;
         -webkit-line-clamp:2;
         -webkit-box-orient: vertical;

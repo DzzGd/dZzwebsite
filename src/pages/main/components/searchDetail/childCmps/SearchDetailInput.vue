@@ -5,8 +5,7 @@
       <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shouye" />
       </svg>
-      <span class="highlight">首页</span>
- 
+      <router-link class="highlight" to="/TechShare" tag="span">首页</router-link>
       <span v-for="item in valueArr" :key="item">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-shuangyoujiantou-" />
@@ -15,14 +14,9 @@
       </span>
 
     </p>
-    <el-input placeholder="请输入内容" clearable v-model="searchValue">
-      <i
-        slot="prefix"
-        class="el-input__icon el-icon-search search-icon"
-        ontouchstart
-        @click="handleclcik"
-      ></i>
-    </el-input>
+    <dz-input @clickEvent="handleclcik" 
+              @keyupEvent="handleclcik"
+              v-model="keyword"></dz-input>
     <p class="result">
       搜索结果
       <span class="highlight">{{ totalNum }}</span> 条
@@ -30,6 +24,7 @@
   </div>
 </template>
 <script>
+import  DzInput from "@commonCmps/dzInput/DzInput"
 export default {
   name: "SearchDetailInput",
   props: {
@@ -48,12 +43,20 @@ export default {
   },
   data() {
     return {
+      keyword: '',
       valueArr: [],
-      searchValue: "",
     };
   },
   methods: {
-    handleclcik() {},
+    handleclcik() {
+      this.$router.push({
+        path: '/SearchDetail' ,
+        query: {
+          type: 'keyword',
+          value: this.keyword
+        } 
+      })
+    },
     setValue() {
       let arr = []
       if (this.type === "time") {
@@ -78,6 +81,9 @@ export default {
     value() {
       this.setValue()
     }
+  },
+  components: {
+    DzInput
   }
 };
 </script>

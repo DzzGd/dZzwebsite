@@ -2,15 +2,18 @@
   <div class="article-related">
     <p class="related-header">相关文章</p>
     <el-divider></el-divider>
+
     <div class="related-body">
       <div class="related-list">
-        <div class="related-item" v-for="index in 4" :key="index">
-          <img
-            src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3673458369,3844552149&fm=26&gp=0.jpg"
-            alt
-          />
-          <p class="desc">如何使用vue的当行守卫</p>
-          <p class="desc-detail">如何使用vue的当行守使用vue的当行守使用vue的当行守使用vue的当行守卫如何使用vue的当行守卫如何使用vue的当行守卫</p>
+        <div class="related-item" v-for="item in relatedList" :key="item._id">
+          <router-link :to="'/TechShare/Articles/'+item._id" tag="div">
+            <img
+              src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3673458369,3844552149&fm=26&gp=0.jpg"
+              alt
+            />
+            <p class="desc ellipsis">{{item.title}}</p>
+            <p class="desc-detail">{{item.brief}}</p>
+          </router-link>
         </div>
       </div>
     </div>
@@ -18,6 +21,15 @@
 </template>
 <script>
 export default {
+  name: "",
+  props: {
+    relatedList: {
+      type: Array,
+      default() {
+        return [];
+      }
+    }
+  },
   data() {
     return {
       name: "ArticleRelated"
@@ -27,6 +39,7 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+@import "@css/mixin";
 @media screen and (max-width: 678px) {
   .related-body .related-item {
     width: 49% !important;
@@ -38,48 +51,45 @@ export default {
   }
 }
 .article-related {
-  margin: 3px;
-  margin-top: 10px;
+  margin: 24px 3px 3px;
   border-radius: 4px;
   padding: 10px;
-  background-color: #eee;
+  background-color: rgb(248, 248, 248);
   .related-header {
     font-size: 18px;
     font-weight: bold;
   }
   .related-body {
     .related-list {
-      display: flex;
+      @include fj(space-around);
       flex-wrap: wrap;
-      justify-content: space-around;
       .related-item {
+        cursor: pointer;
         width: 24%;
         margin-bottom: 10px;
-        background-color: #fff;
-        box-shadow: 1px 1px 5px #aaa;
+        box-shadow: 1px 1px 5px rgb(197, 197, 197);
+        text-align: left;
         img {
           width: 100%;
-          height: 180px;
+          min-height: 120px;
+          max-height: 200px;
           object-fit: cover;
+          border: 4px solid #fff;
         }
-        text-align: left;
         .desc {
-          padding: 15px 10px;
-          font-size: 16px;
+          @include shc(16px, 1.2, $dark);
+          margin-bottom: 10px;
+          padding: 15px 10px 0;
           font-weight: bold;
+          padding: 0 8px;
+          color: rgb(51, 51, 51);
         }
         .desc-detail {
           box-sizing: border-box;
-          margin:0px 10px 10px 10px;
-          color: #666;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          -webkit-box-orient: vertical;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          font-size: 14px;
+          margin: 0px 10px 10px 10px;
           height: 62px;
-          line-height: 1.5;
+          @include shc(14px, 1.5, #666);
+          @include linesEllipsis(3);
         }
       }
     }

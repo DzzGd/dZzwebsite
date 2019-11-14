@@ -7,27 +7,20 @@
       <el-form-item label="标题" class="write-title" prop="title">
         <el-input v-model="form.title"></el-input>
       </el-form-item>
-
       <el-divider></el-divider>
-
       <el-form-item label="简介" class="write-title" prop="brief">
         <el-input type="textarea" v-model="form.brief"></el-input>
       </el-form-item>
-
       <el-divider></el-divider>
-
       <el-form-item label="分类" class="write-title category" prop="category">
         <el-radio-group v-model="form.category"
                         class="category-group">
-          
           <el-radio v-for="categoryItem in categoryList"
                     :key="categoryItem"
                     :label="categoryItem">{{categoryItem}}</el-radio>
         </el-radio-group>
       </el-form-item>
-
       <el-divider></el-divider>
-
       <el-form-item label="标签" class="write-title">
         <div class="container">
 
@@ -40,14 +33,11 @@
               </el-tag>
             </transition-group>
           </div>
-
           <el-dropdown trigger="click" placement="top">
-
             <el-button type="success" size="small" class="add-tag">
               添加
               <i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
-
             <el-dropdown-menu slot="dropdown" 
                               class="el-dropdown-menu">
               <div class="write-article-info-select-container">
@@ -68,13 +58,10 @@
                 </div>
               </div>
             </el-dropdown-menu>
-
           </el-dropdown>
         </div>
       </el-form-item>
-
       <el-divider></el-divider>
-
     </el-form>
   </div>
 </template>
@@ -156,14 +143,19 @@ export default {
       if (this.restAddTagsNum <= 0) return
       if (this.form.tags.indexOf(innerText) !== -1) return
       this.form.tags.push(innerText)
+    },
+    resetForm() { //重置
+      this.$refs.form.resetFields()
+      this.form.tags.splice(0)
     }
   },
   computed: {
     restAddTagsNum() { // 还能添加几个标签
       return this.selectTagsNum - this.form.tags.length
+      
     }
   }
-};
+}; 
 </script>
 <style scoped lang="scss">
 .write-article-info {
@@ -183,7 +175,7 @@ export default {
     }
   }
 }
-
+ 
 .tags-enter-active,.tags-leave-active{
   transition: all .5s;
 }

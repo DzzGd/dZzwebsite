@@ -4,7 +4,10 @@
       <div slot="header" class="clearfix">
         <i class="el-icon-s-order"></i>
         <span>留言板</span>
-        <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="flush">
+          <i v-if="!isFlush">刷新</i>
+          <i v-else class="el-icon-loading" ></i>
+        </el-button>
       </div>
 
       <el-card class="box-card dz-box-card" v-for="(item, index) in leaveMessage" :key="item._id">
@@ -62,7 +65,8 @@ export default {
       preIndex: null,
       clickLikesNum: {},
       clickDislikesNum: {},
-      updateDebounce: function(){}
+      updateDebounce: null,
+      isFlush: false
     };
   },
   methods: {
@@ -122,9 +126,16 @@ export default {
         this.leaveMessage = data.leaveMessage.data
         this.totalPages = data.leaveMessage.totalPages
         this.pageInfo.requestPage = data.leaveMessage.currentPage
+        this.isFlush = false
       }, err => {
         this.$message.error('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..')
+        this.isFlush = false
       })
+    },
+    flush() {
+      this.isFlush = true
+      this.pageInfo.requestPage = 0
+      this.get_leave_message()
     }
   },
   created() {
