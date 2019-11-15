@@ -10,7 +10,6 @@
     <div class="base-info">
       <write-article-info ref="articleInfo"></write-article-info>
     </div>
-
     <mark-down @triggerContent="getContent" ref="articleContent" @imgUpload="imgUpload"></mark-down>
   </div>
 </template>
@@ -71,7 +70,9 @@ export default {
     getImgUrlArr() {
       const reg = /!\[.[^!]*\]\(http(s)?:\/\/.[^!\[\]]+\.(jpg|png|jpeg|gif|webp|icon|bmp)\)/gi
       const reg1 = /!\[.[^!]*\]\((.*)\)/
-      const arr = this.articleContent.match(reg).map(item => item.match(reg1)[1])
+      let arr = this.articleContent.match(reg)
+      arr = arr ? arr : []
+      arr.map(item => item.match(reg1)[1])
       this.articleData.imgUrl = arr
       this.articleData.content = this.articleContent;
     },
@@ -136,6 +137,7 @@ export default {
       service.sendArticle(
         this.articleData,
         res => {
+          
           if (res) this.$message.success("success");
           //成功 重置内容
           this.resetDate();

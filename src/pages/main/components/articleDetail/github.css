@@ -588,8 +588,9 @@
   background-color: #f6f8fa;
 }
 
-.markdown-body img {
-  max-width: 100%;
+.markdown-body img { 
+  margin: 0 auto;
+  max-width: 100%; 
   box-sizing: content-box;
   background-color: #fff;
 }

@@ -77,13 +77,12 @@ export default {
     getDataList(category) {
       const page = ++this.categoryList[category].currentPage
       service.getSingleCategory(category, page).then(res => {
-        console.log(res)
         if (res.data.status === 1) {
           this.categoryList[category].list.push(...res.data.data.list)
           this.categoryList[category].totalPage = res.data.data.totalPages
         }
       }).catch(err => {
-        console.log(err)
+        
       })
     },
   },

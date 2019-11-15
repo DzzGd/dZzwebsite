@@ -58,7 +58,7 @@ export default {
 </script>
 <style scoped lang='scss'>
 .side-broad-myinfo {
-  margin: 10px 10px 0;
+  margin: 10px 5px 0;
   padding: 20px;
   border-radius: 3px;
   background: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1573190278906&di=8e08388ecb7216b60f2a7fb08b9415ca&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F9%2F59c8c8057910e.jpg) -380px -480px;

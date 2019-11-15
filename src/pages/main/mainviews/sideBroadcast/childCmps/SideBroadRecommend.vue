@@ -63,7 +63,7 @@ export default {
 }
 
 .side-broad-recommend {
-  margin: 10px 10px 0 10px;
+  margin: 10px 5px 0 5px;
   background-color: #fff;
   padding: 20px 20px 10px;
   .title {

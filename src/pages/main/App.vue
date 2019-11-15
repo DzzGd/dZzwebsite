@@ -119,15 +119,21 @@ export default {
     flex-wrap: wrap !important;
   }
   .dz-leave-message {
-    margin-right: 0 !important;
+    margin-right: 5px !important;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1120px){
   .dz-leave-message {
-    display: block !important;
     margin-right: 305px !important;
   }
 }
+
+@media screen and (min-width: 1120px){
+  .dz-leave-message {
+    display: none !important;
+  }
+}
+
 @media screen and (max-width: 570px) {
   .is-vertical {
     padding-top: 60px !important;
@@ -137,7 +143,6 @@ export default {
 body {
   background-color: rgb(240, 240, 240);
   .dz-leave-message {
-    display: none;
     margin-left: 5px;
   }
   .is-vertical {

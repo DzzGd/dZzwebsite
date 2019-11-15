@@ -1,26 +1,13 @@
 <template>
   <div class="head-nav-bar">
     <ul class="navbar-list">
-      <li>
-        <router-link to="/HomePage">首页</router-link>
-      </li>
-      <li>
-        <router-link to="/TechShare">技术分享</router-link>
-      </li>
-      <!-- <li>
-        <router-link to="/FriendShare">大家分享</router-link>
-      </li> -->
-      <li>
-        <router-link to="/TechNews">实时</router-link>
-      </li>
-      <!-- <li>
-        <router-link to="/Entertainment">娱乐</router-link>
-      </li> -->
-      <li>
-        <router-link to="/WriteArticle">写文章</router-link>
-      </li>
-      <li>
-        <router-link to="/FriendLink">友情链接</router-link>
+      <li
+        v-for="(item,index) in barList"
+        :key="item.router"
+        :class="currentIndex===index?'bt':''"
+        @click="currentIndex=index"
+      >
+        <router-link :to="item.router">{{item.font}}</router-link>
       </li>
     </ul>
   </div>
@@ -28,31 +15,50 @@
 
 <script>
 export default {
-  name: "HeadNavBar"
+  name: "HeadNavBar",
+  data() {
+    return {
+      barList: [
+        { router: "/HomePage", font: "首页" },
+        { router: "/TechShare", font: "技术分享" },
+        { router: "/TechNews", font: "实时" },
+        { router: "/WriteArticle", font: "写文章" },
+        { router: "/FriendLink", font: "友情链接" }
+      ],
+      currentIndex: 0
+    };
+  }
 };
 </script>
 
 <style scoped lang="scss">
-.navbar-list {
-  width: 100%;
-  display: flex;
-  text-align: center;
-  li {
-    font-family: "新宋体";
-    font-weight: bold;
-    flex: 1;
-    height: 80px;
-    box-sizing: border-box;
-    border-bottom: 4px solid transparent;
-    &:hover {
-      border-bottom: 4px solid #40a0ff96;
-    }
-    a {
-      line-height: 80px;
-      color: #52a7fc;
-      &:hover {
-        color: #0080ff;
+.head-nav-bar {
+  height: inherit;
+  .navbar-list {
+    width: 100%;
+    display: flex;
+    text-align: center;
+    height: inherit;
+    li {
+      height: inherit;
+      font-family: "新宋体";
+      font-weight: bold;
+      flex: 1;
+      box-sizing: border-box;
+      border-bottom: 4px solid transparent;
+      height: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      a {
+        color: #52a7fc;
+        &:hover {
+          color: #0080ff;
+        }
       }
+    }
+    .bt {
+      border-bottom: 4px solid #40a0ff96;
     }
   }
 }

@@ -22,10 +22,11 @@ $light: #f8f9fa;
 $dark: #343a40;
 
 // 背景图片地址和大小
-@mixin bg($url) {
+@mixin bg($url, $left, $top) {
   background-image: url($url);
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  // background-size: 100% 100%;
+  background-position: $left $top;
 }
 
 @mixin borderRadius($radius) {
@@ -122,5 +123,5 @@ $dark: #343a40;
   display: flex;
   justify-content: $type;
   flex-direction: $direction;
-  justify-items: $verticle;
+  align-items: $verticle;
 }

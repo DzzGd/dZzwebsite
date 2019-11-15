@@ -40,7 +40,7 @@ export default {
 <style scoped lang="scss">
 @import '@css/mixin';
 .side-broad-tags {
-  margin: 10px 10px 0;
+  margin: 10px 5px 0;
   background-color: #fff;
   @include borderRadius(3px);
   padding: 20px;

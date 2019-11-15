@@ -62,7 +62,7 @@ export default {
 <style scoped lang='scss'>
 .side-broad-siteinfo {
   background-color: #fff;
-  margin: 10px 10px;
+  margin: 10px 5px;
   padding: 20px;
   .title {
     margin-bottom: 0 !important;

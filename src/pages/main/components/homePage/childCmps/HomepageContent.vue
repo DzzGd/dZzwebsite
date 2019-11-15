@@ -7,7 +7,7 @@
           <a href="/#/TechShare" @click.prevent="toTechShare">MORE...</a>
         </span>
       </h1>
-      <el-col :xs="24" v-for="(item, index) in showList" :key="item._id" :sm="index===0?24:12">
+      <el-col :xs="24" v-for="(item, index) in showList" :key="item._id" :sm="index===0?24:12" class="inner-content">
         <div class="homepage-content">
           <div class="header ellipsis" :style="{'color':colors[index]}">{{index+1}}. {{item.title}}</div>
 
@@ -19,7 +19,6 @@
                     :src="item.imgUrl[0]?item.imgUrl[0]:'http://bpic.588ku.com/element_origin_min_pic/17/02/06/ed0c0ddc6271b0717ca64ffdf847eab6.jpg'"
                     class="body-img"/>
                 </div>
-
               </el-col>
  
               <el-col :xs="24" :sm="index===0?16:24" class="el-col">
@@ -41,7 +40,7 @@
             <p class="info">
               <span>{{item.author}}:</span>
               <span>{{new Date(item.createTime).getTime() | dateFormat('yyyy-MM-dd hh:mm')}}</span>
-              <span>评论:{{100}}+</span>
+              <span>{{item.comments.commentsNum}}</span>
               <span>阅读:{{item.clickhot}}</span>
             </p>
           </div>
@@ -88,9 +87,10 @@ export default {
 @media screen and (max-width: 768px) {
   .body-content {
     padding-left: 0 !important;
-    margin-top: 10px;
+    margin-top: 8px;
   }
 }
+
 .container {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   transition: all .3s;
@@ -128,6 +128,11 @@ export default {
   }
 }
 
+.inner-content {
+  &:first-of-type{
+    margin-bottom: 5px;
+  }
+}
 .homepage-content {
   overflow: hidden;
   border: 1px solid #ebeef5;
@@ -136,7 +141,7 @@ export default {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   .header {
-    @include shc(16px, 1.5, $red, "新宋体");
+    @include shc(16px, 1.5, $red, "Microsoft YaHei");
     border-bottom: 1px solid #ebeef5;
     padding: 10px;
     font-weight: bold;
@@ -157,6 +162,7 @@ export default {
     }
 
     .body-container {
+      height: 110px;
       .body-content {
         @include font(16px, 1.5, "黑体");
         @include linesEllipsis(3);

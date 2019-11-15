@@ -19,7 +19,7 @@
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-pinglun1" />
         </svg>
-      {{articleData.comments?articleData.comments.commentsArr.length:0}}
+      {{articleData.comments.commentsNum}}
       </span>
 
       <span>

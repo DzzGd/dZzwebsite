@@ -52,7 +52,6 @@ export default {
       );
     },
     $imgDel(pos) {
-      
       delete this.img_file[pos[0]];
     },
     $imglst2Url(arr) {

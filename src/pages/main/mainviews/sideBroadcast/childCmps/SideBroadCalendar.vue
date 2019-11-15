@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     toSearch(time, info) {
+      console.log(time, info )
       this.$router.push({ 
         path: '/SearchDetail',
         query: {
@@ -42,7 +43,7 @@ export default {
       if (!this.dateArr[year][month]) {
         this.dateArr[year][month] = false;
       } else {
-        return;
+        return
       }
       let start = new Date(year, month, 1).getTime();
       let end = new Date(year, month + 1, 1).getTime();
@@ -67,7 +68,7 @@ export default {
 <style scoped lang='scss'>
 @import "@css/mixin";
 .side-broad-calendar {
-  margin: 10px 10px;
+  margin: 10px 5px;
   .is-selected {
     color: $blue;
   }

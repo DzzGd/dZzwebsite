@@ -43,7 +43,7 @@ module.exports = {
         // use: ['style-loader', 'css-loader']
         use: {
           loader: 'worker-loader',
-          options: {inline: true, name:'js/[name]?[hash:8].js'}
+          options: {inline: true, name:'js/[name].js'}
         }
       },
       {
@@ -64,7 +64,7 @@ module.exports = {
       },
       {
         test: /\.(jpg|jpeg|gif|svg|png|)$/,
-        use: 'url-loader?limit=10000&name=img/pic/[name][hash:8].[ext]'
+        use: 'url-loader?limit=10000&name=img/pic/[name].[ext]'
       },
       {
         test: /\.js$/,
@@ -75,7 +75,7 @@ module.exports = {
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)$/,
-        use: 'url-loader?name=img/font/[name][hash:8].[ext]'
+        use: 'url-loader?name=img/font/[name].[ext]'
       },
       {
         test: /\.vue$/,

@@ -21,7 +21,7 @@
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-pinglun1" />
             </svg>
-            <span>99+</span>
+            <span>{{item.comments.commentsNum}}</span>
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-yuedu" />
             </svg>
@@ -103,9 +103,6 @@ export default {
           }
           svg {
             font-size: 16px;
-            &:nth-of-type(4) {
-              font-size: 22px;
-            }
           }
           .continue {
             float: right;
