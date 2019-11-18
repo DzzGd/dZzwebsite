@@ -6,7 +6,9 @@
     <div class="comment-body" v-for="item in articleComments" :key="item.nthfloor">
       <div class="comment-floor">
         <div class="main-floor floor" :data-boxid="''+item.nthfloor">
-          <div class="avatar"></div>
+          <div class="avatar">
+            <img src="http://static.bigbigbigdz.xyz:8111/static/img/avatars/boy_no_1.ico" alt="">
+          </div>
           <div class="content">
             <p class="content-message">
               <span class="user">{{item.main.from}}</span>
@@ -26,7 +28,9 @@
              v-for="subItem in item.other"
              :key="subItem.nthfloor"
         >
-          <div class="avatar other-avatar"></div>
+          <div class="avatar other-avatar">
+            <img src="http://static.bigbigbigdz.xyz:8111/static/img/avatars/cute_no_1.ico" alt="">
+          </div>
           <div class="content">
             <p v-if="subItem.to" class="content-message">
               <span class="user">{{subItem.from}}</span>回复
@@ -196,9 +200,12 @@ export default {
           flex-shrink: 0;
           width: 50px;
           height: 50px;
-          background-color: #eee;
+          border: 1px dashed #fff;
           border-radius: 50%;
           margin-right: 10px;
+          img {
+            width: 100%;
+          }
         }
         .content {
           flex: 1;

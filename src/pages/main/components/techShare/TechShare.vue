@@ -17,9 +17,8 @@
         <el-menu-item index="Vue">Vue</el-menu-item>
         <el-menu-item index="Node">Node</el-menu-item>
         <el-menu-item index="webpack">webpack</el-menu-item>
-        <el-menu-item index="React">
-          <a href="javascript:void(0)">React</a>
-        </el-menu-item>
+        <el-menu-item index="React">React</el-menu-item>
+        <el-menu-item index="other">其他</el-menu-item>
       </el-menu>
     </div>
     <dz-input v-model="keyword" 
@@ -49,11 +48,22 @@ export default {
         React  :{currentPage: 0, list: [], totalPage: 0},
         webpack:{currentPage: 0, list: [], totalPage: 0},
         JavaScript:{currentPage: 0, list: [], totalPage: 0},
+        other:{currentPage: 0, list: [], totalPage: 0},
       },
-      currentCategory: 'HTML'
+      currentCategory: 'HTML',
+      firstLoad: true
     };
   },
   created() {
+    this.getDataList(this.currentCategory)
+  },
+  activated() {
+    if (this.firstLoad) return this.firstLoad = false
+    for(let item of Object.keys(this.categoryList)) {
+      this.categoryList[item].currentPage = 0
+      this.categoryList[item].list = []
+      this.categoryList[item].totalPages = 0
+    }
     this.getDataList(this.currentCategory)
   },
   methods: {
@@ -81,9 +91,7 @@ export default {
           this.categoryList[category].list.push(...res.data.data.list)
           this.categoryList[category].totalPage = res.data.data.totalPages
         }
-      }).catch(err => {
-        
-      })
+      }).catch(err => {})
     },
   },
   computed:{

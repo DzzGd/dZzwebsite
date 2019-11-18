@@ -154,7 +154,7 @@ body {
   }
   .el-main {
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
   }
   &::-webkit-scrollbar {
     width: 4px;

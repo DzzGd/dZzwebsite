@@ -19,7 +19,7 @@
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-pinglun1" />
         </svg>
-      {{articleData.comments.commentsNum}}
+      {{commentsNum}}
       </span>
 
       <span>
@@ -54,6 +54,11 @@ export default {
   created() {},
   data() {
     return {};
+  },
+  computed: {
+    commentsNum() {
+      return this.articleData.comments ? this.articleData.comments.commentsNum : 0
+    }
   }
 };
 </script>

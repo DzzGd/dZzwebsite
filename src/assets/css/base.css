@@ -90,3 +90,44 @@ img{
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.btn {
+  font-size: 16px;
+  line-height: 1.1;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 400;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  transition: color 0.15s;
+  cursor: pointer;
+  outline: none;
+}
+.btn-blue {
+  background-color: #0080ff;
+  border-color: #0072e4;
+}
+
+.btn-blue:hover {
+  background-color: #006ad4;
+  border-color: #006ad4;
+}
+.btn-blue:active {
+  background-color: #0058af;
+  border-color: #0059b3;
+}
+
+.btn-green {
+  background-color: #00965e;
+  border-color: #00965e;
+}
+.btn-green:hover {
+  background-color: #007046;
+  border-color: #00633e;
+}
+.btn-green:active {
+  background-color: #00633e;
+  border-color: #005636;
+}

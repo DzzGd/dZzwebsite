@@ -97,10 +97,11 @@ export default {
         reject(err)
       })
   },
-  getRankArticles(resolve, reject) {
+  getRankArticles(params, resolve, reject) {
     axios.request({
       url: '/interactive/getRankArticles',
       method: 'get',
+      params
     })
       .then(res => {
         if (res.data.status === 500) reject(err)
@@ -238,4 +239,28 @@ export default {
       resolve(res.data.imgUrl)
     }).catch(err => reject(err))
   },
+
+  getAvatarList(currentPage, quantity, resolve, reject) {
+    return axios.request({
+      url: '/interactive/getavatarlist',
+      method: 'get',
+      params: {
+        currentPage,
+        quantity
+      }
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  },
+
+  setAvater(id, addr, resolve, reject) {
+    return axios.request({
+      url: '/interactive/setavatar',
+      method: 'post',
+      data: qs.stringify({id, addr})
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  },
+
 }

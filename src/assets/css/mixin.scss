@@ -35,7 +35,12 @@ $dark: #343a40;
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
-
+@mixin userselect($select) {
+  -webkit-user-select: $select;
+  -moz-user-select: $select;
+  -ms-user-select: $select;
+  user-select: $select;
+}
 // 多行文字省略号
 @mixin  linesEllipsis($rows){
   display: -webkit-box;

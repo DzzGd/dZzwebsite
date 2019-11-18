@@ -8,7 +8,7 @@
     <div class="article-container">
       <list-item :list-data="other"></list-item>
     </div>
-    <load-more class="load-more" :hasMore="hasMore"></load-more>
+    <load-more class="load-more" :hasMore="hasMore" @loadMore="loadMore"></load-more>
     <div class="article-container">
       <homepage-tabs :hot-category="tabControlArticles"></homepage-tabs>
     </div>
@@ -30,7 +30,6 @@ export default {
       topThree: [],
       other: [],
       homepageArticles:{ page: 0, list :[], totalpages: 1 },
-      
       tags: {
         JavaScript: 1,
         HTML: 1,
@@ -47,6 +46,7 @@ export default {
   methods: {
     getRankArticles() {
       service.getRankArticles(
+        { currentPage: ++this.homepageArticles.page, quantity: 10 },
         res => {
           this.homepageArticles.list.push(...res.data.data)
           this.topThree = this.homepageArticles.list.slice(0, 3);
@@ -70,7 +70,10 @@ export default {
           }, 10 * 1000);
         }
       );
-    }
+    },
+    loadMore() {
+
+    },
   },
   components: {
     HomepageSwiperBox,

@@ -9,7 +9,9 @@ const store = new vuex.Store({
     logStatus  : false,
     _id        : null,
     identify   : 2,
-    username   : '匿名网友'
+    username   : '',
+    avatar     : 'http://static.bigbigbigdz.xyz:8111/static/img/avatars/default.png',
+    position  : '宇宙中的某个繁星'
   },
   mutations,
   actions,
