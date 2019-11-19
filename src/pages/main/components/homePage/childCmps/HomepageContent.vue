@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import { METHODS } from 'http'
 export default {
   name: "HomepageContent",
   props: {
