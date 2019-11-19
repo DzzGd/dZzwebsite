@@ -263,4 +263,13 @@ export default {
     }).catch(err => reject(err))
   },
 
+  getCnodeCommunity(params, resolve, reject) {
+    return axios.request3({
+      url: '/topics',
+      method: 'get',
+      params
+    }).then(res => {
+      resolve(res.data)
+    }).catch(err => reject(err))
+  }
 }

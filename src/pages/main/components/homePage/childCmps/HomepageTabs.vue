@@ -1,7 +1,7 @@
 <template>
   <div class="homepage-tabs">
     <h1 class="title">
-      <span>热门分类</span>
+      <span>基础分类</span>
       <span class="more">
         <a href="/#/TechShare" @click.prevent="toTechShare">MORE...</a>
       </span>

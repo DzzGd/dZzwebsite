@@ -74,12 +74,12 @@ export default {
 @import "@css/mixin";
 .user-center-avatar-box {
   background-color: #fff;
-  @include positionLT(absolute,0,195px,10);
+  @include positionLT(absolute,0,195px,999);
   height: 300px;
   border: 1px solid #eee;
   border-top: 3px solid $red;
   padding: 10px 15px 15px 15px;
-  overflow: hidden;
+  overflow: hidden; //在展开收缩过程中逐渐显示隐藏内部元素
   .choose-avatar-box {
     @include fj(space-evenly, row, center);
     width: 250px;

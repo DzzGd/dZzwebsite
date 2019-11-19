@@ -6,14 +6,13 @@
       </div>
 
       <div class="site-desc">
-        <p class="declare">CLASSIFY</p>
+        <p class="declare">DECLARE</p>
         <p class="declare-content">
           <span>
-            &#x1f62c;
-            1. 本网站由dZzGd设计并构建, 材料来自于互联网, 如有内容涉及到它人版权请立即联系给予更改
+            😃1. 本网站由dZzGd设计并构建, 材料来自于互联网, 如有内容涉及到它人版权请立即联系给予更改
           </span>
           <br />
-          <span>2. 欢迎大家提出修改意见</span>
+          <span>😃2. 欢迎大家提出修改意见</span>
           <br />
           <span>
             Copyright &copy; www.dzzlcxx.top 个人网站 All Rights Reserved.

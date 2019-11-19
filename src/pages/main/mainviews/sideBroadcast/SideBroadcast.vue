@@ -84,6 +84,8 @@ export default {
   }
 }
 .side-broadcast {
+  position: relative;
+  // z-index: 1;
   border: 1px solid #eee;
   overflow: visible;
   .my-website{

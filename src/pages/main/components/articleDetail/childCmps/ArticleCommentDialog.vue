@@ -29,7 +29,7 @@ export default {
     info: {
       type: Object,
       default() {
-        return {}
+        return {} 
       }
     }
   },
@@ -54,7 +54,7 @@ export default {
         document.addEventListener('click',this.boxBlur)
       }, 0);
     },
-    sendComment() {
+    sendComment() { //发送评论, 并在回调中返回数据给父组件
       this.info.content = this.content
       service.sendComment(this.info, res => {
         this.$emit('replyBtnEvent', res.data.data.commentsArr)

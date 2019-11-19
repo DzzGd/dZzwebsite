@@ -98,7 +98,7 @@ export default {
       const   end = textarea.selectionEnd
       this.leaveMessage = this.leaveMessage.substring(0, start) + emoji + this.leaveMessage.substring(end)
       textarea.focus()
-      setTimeout(() => { //貌似比focus后执行, 设置一个异步比它更后执行... 表情的长度为2 不是1 ...
+      setTimeout(() => { //貌似比focus后执行, 设置一个异步比它更后执行... 表情的长度为2 不是1 
       textarea.selectionStart = start + 2
       textarea.selectionEnd   = end + 2
       textarea = null
@@ -116,7 +116,6 @@ export default {
         poster: userInfo._id,
         username: userInfo.username
       };
-      console.log(sendInfo);
       homepageService.sendLeaveMessage(
         sendInfo,
         res => {

@@ -8,7 +8,7 @@
         <div class="user-avatar-box">
           <img
             class="user-avatar-img"
-            :src="avatarAddr"
+            :src="avatarAddr||avatar"
           />
           <div class="user-avatar-btn-box clearfix">
             <button class="avatar-change-btn" @click="changeAvatar">更换</button>
@@ -25,18 +25,18 @@
           </p>
           <p>
             <span>注册时间:</span>
-            <span>{{new Date(createTime).getTime() | dateFormat('yyyy-MM-dd')}}</span>
+            <span>{{createTime|dateFormat('yyyy-MM-dd')}}</span>
           </p>
           <p>
             <span>所在地:</span>
-            <span>{{this.position}}</span>
+            <span>{{position}}</span>
           </p>
         </div>
       </div>
     </div>
   </div>
 </template>
-
+ 
 <script>
 import UserCenterAvatarBox from "./childCmps/userCenterAvatarBox";
 import service from "@common/network/homepage-service"
@@ -50,7 +50,9 @@ export default {
       isLoading: false
     };
   },
-
+  beforeMount(){
+    console.log(this.avatar)
+  },
   methods: {
     ...mapActions({
       action_Avatar: 'store_changeAvatar',
@@ -66,7 +68,7 @@ export default {
         this.$message.warning('没有更改')
         return 
       }
-      service.setAvater(this._id, this.avatarAddr, res => {
+      service.setAvater(this._id, this.avatarAddr, res => {//获取头像地址列表
         this.isLoading = false
         if (res.status === 2) {
           return this.$message.error('出错罗')
@@ -82,19 +84,28 @@ export default {
     }
   },
   created() {
-    this.avatarAddr = this.avatar
-    this.action_pos().then(res => {
-      console.log(res)
+    
+    this.action_pos().then(res => { //获取地理位置
     }).catch(err => {
       this.$message.warning('获取位置失败')
     })
   },
+  mounted() {
+    
+  },
   components: {
     UserCenterAvatarBox
   },
-  computed: {
-    ...mapState(['_id', 'avatar', 'createTime', 'username', 'position'])
+  computed: { //从状态管理中心获取用户数据
+    ...mapState(['_id', 'username','avatar', 'createTime', 'position'])
   },
+  watch: {
+    avatar(newVal) {
+      // 监听变化, 初始加载为default
+      console.log(newVal)
+      this.avatarAddr = newVal
+    }
+  }
 };
 </script>
 
@@ -112,6 +123,16 @@ export default {
 }
 @import "@css/mixin";
 .user-center {
+  &::before{
+    position: absolute;
+    content: "";
+    width:100%;
+    height: 570px;
+    display: block;
+    opacity: 0.2;
+    background: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1574185871488&di=ccc3418b3ce7609ffccf0dc0c3aa0f42&imgtype=0&src=http%3A%2F%2Fhbimg.b0.upaiyun.com%2F6b00f56f6db271413aa3aa3d80208e8351f5f9e02b6e8b-KAbRMP_fw658') no-repeat center center/cover;
+  }
+  min-height: 570px;
   background-color: #fff;
   padding-left: 5px;
   padding-right: 5px;

@@ -105,6 +105,4 @@ Promise.all([this.getWorker(), this.getDetail()]).then(res => {
 
 ### ArticleComment
 
-评论框失去焦点消失的回调存在问题, 无论是谁先定义, 就是点击事件总是先触发, 失去焦点的事件后触发.
 
-解决办法是将点击事件的回调放入setTimeout异步调用中, 后执行...

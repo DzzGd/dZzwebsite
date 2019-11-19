@@ -93,11 +93,6 @@ export default {
 
 .container {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  transition: all .3s;
-  &:hover {
-    transform: translate(1px, -1px);
-    box-shadow: 0 3px 12px 1px rgba(0, 0, 0, 0.24);
-  }
   margin-top: 10px;
   border-top: 1px solid #eee;
   .inner {
@@ -170,8 +165,8 @@ export default {
         text-indent: 36px;
         padding-left: 10px;
         cursor: pointer;
+        transition: .3s;
         &:hover{
-          transition: .3s;
           transform: translate(1px,-1px);
         }
       }

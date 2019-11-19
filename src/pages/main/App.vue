@@ -12,7 +12,7 @@
           <!-- 主体 -->
           <el-main class="el-main">
             <transition name="body-transition" mode="out-in">
-              <keep-alive exclude="ArticleDetail,SearchDetail">
+              <keep-alive exclude="ArticleDetail,SearchDetail,UserCenter">
                 <router-view></router-view>
               </keep-alive>
             </transition>
@@ -153,8 +153,10 @@ body {
     margin: 0 auto;
   }
   .el-main {
+    width: 100%;
     padding: 0;
-    overflow: visible;
+    overflow-x: hidden;
+    overflow-y: visible;
   }
   &::-webkit-scrollbar {
     width: 4px;

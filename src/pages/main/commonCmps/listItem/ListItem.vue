@@ -107,8 +107,6 @@ export default {
     border-radius: 4px;
     background-color: #fff;
     color: #303133;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
     -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     padding: 10px;
@@ -187,17 +185,17 @@ export default {
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 0.5s;
+  transition: all .5s;
 }
 .list-leave-active {
   position: absolute;
 }
 .list-move {
-  transition: all 0.5s;
+  transition: all .5s;
 }
 .list-enter,
 .list-leave-to {
-  transform: translate(80px, 0px);
+  transform: translate(0px, 80px);
   opacity: 0;
 }
 </style>

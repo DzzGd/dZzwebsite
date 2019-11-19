@@ -1,16 +1,19 @@
 <template>
   <div class="home-page">
-    <homepage-swiper-box></homepage-swiper-box>
-
+    <homepage-swiper-box/>
+    <!-- 1. 我的文章-->
     <div class="article-container">
-      <homepage-content title="热度文章" :show-list="topThree"></homepage-content>
+      <homepage-content title="我的文章" :show-list="topThree"/>
+      <list-item :list-data="other"/>
+      <load-more class="load-more" :hasMore="hasMore" @loadMore="loadMore"/>
     </div>
+    <!-- 2. 基础分类-->
     <div class="article-container">
-      <list-item :list-data="other"></list-item>
+      <homepage-tabs :hot-category="tabControlArticles"/>
     </div>
-    <load-more class="load-more" :hasMore="hasMore" @loadMore="loadMore"></load-more>
+    <!-- 3. cnode社区文章 -->
     <div class="article-container">
-      <homepage-tabs :hot-category="tabControlArticles"></homepage-tabs>
+      <homepage-node-community/>
     </div>
 
   </div>
@@ -23,6 +26,7 @@ import      HomepageTabs from "./childCmps/HomepageTabs";
 import          ListItem from "@commonCmps/listItem/ListItem"
 import          LoadMore from "@commonCmps/loadMore/LoadMore"
 import           service from "@common/network/homepage-service";
+import HomepageNodeCommunity from "./childCmps/HomepageNodeCommunity"
 export default {
   name: "HomePage.vue",
   data() {
@@ -80,7 +84,8 @@ export default {
     HomepageContent,
     HomepageTabs,
     ListItem,
-    LoadMore
+    LoadMore,
+    HomepageNodeCommunity
   },
   computed: {
     hasMore() {
@@ -97,11 +102,8 @@ export default {
   border-right: 1px solid #eee;
   border-left: 1px solid #eee;
   .article-container {
+    background-color: #ffffff;
     padding: 5px 5px 0;
-  }
-  .load-more {
-    margin-right: 5px;
-    margin-left: 5px;
   }
 }
 </style>

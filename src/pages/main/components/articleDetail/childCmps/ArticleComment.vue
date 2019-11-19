@@ -7,7 +7,7 @@
       <div class="comment-floor">
         <div class="main-floor floor" :data-boxid="''+item.nthfloor">
           <div class="avatar">
-            <img src="http://static.bigbigbigdz.xyz:8111/static/img/avatars/boy_no_1.ico" alt="">
+            <img :src="item.main.poster.avatar" alt="">
           </div>
           <div class="content">
             <p class="content-message">
@@ -29,7 +29,7 @@
              :key="subItem.nthfloor"
         >
           <div class="avatar other-avatar">
-            <img src="http://static.bigbigbigdz.xyz:8111/static/img/avatars/cute_no_1.ico" alt="">
+            <img :src="subItem.poster.avatar" alt="">
           </div>
           <div class="content">
             <p v-if="subItem.to" class="content-message">
@@ -49,6 +49,8 @@
         </div>
       </div>
     </div>
+
+    
     <div class="comment-input">
       <input
         type="text"
@@ -57,6 +59,8 @@
         @click="commentInputFocus($event)"
       />
     </div>
+
+    <!-- 评论输入框,位置是活动的 -->
     <article-comment-dialog 
       ref="dialogbox" 
       :is-show="isBoxShow"
@@ -68,6 +72,7 @@
 </template>
 <script>
 import ArticleCommentDialog from "./ArticleCommentDialog"
+import { mapState } from 'vuex'
 export default {
   name: 'ArticleComment',
   props: {
@@ -81,7 +86,7 @@ export default {
   data() {
     return {
       articleComments: null,
-      floors: null,
+      floors: null, //评论的所有楼层
       dialogboxEl: null,
       isBoxShow: false,
       commentInfo:{},//发送'回复'的信息
@@ -92,16 +97,18 @@ export default {
   },
   methods: {
     showDialog(id, to, nthfloor) {
-      setTimeout(() => {
-        //点击'回复', 并设置setTimeout让点击后于失去焦点
+      console.log(id, to, nthfloor)
+      var t = setTimeout(() => {
+        //点击'回复', 并设置setTimeout让点击后于失去焦点触发
         for (let i = 0, length = this.floors.length; i < length; i++) {
           let box = this.floors[i];
-          if (box.dataset.boxid === id) {
-            box.appendChild(this.dialogboxEl);
+          if (box.dataset.boxid === id) { //锁定点击'回复'的那一层
+            box.appendChild(this.dialogboxEl); //将dialog append到那一层里显示
             this.sendInfo('other', to, nthfloor)
             return;
           }
         }
+        t = null
       }, 0);
     },
     inputBlur() {
@@ -111,26 +118,29 @@ export default {
       //点击评论框
       const target = e.target || window.event.srcElement
       target.parentNode.appendChild(this.dialogboxEl)
-      this.sendInfo('main', null, null)
+      this.sendInfo('main', null, null) //这里的main指的是点击最底下的回复框的标志, other指得是点击'回复'文字时的标志
     },
-    sendInfo(type, to, nthfloor) {
-      
+    sendInfo(type, to, nthfloor) { //将信息发送到CommentDialog组件
       this.isBoxShow = true;
       this.$refs.dialogbox.boxFocus(); //调用组件里面的聚焦
-      const from = this.$store.getters.get_userinfo.username
-      if (from === to) to = ''
+      const from = this.username
+      if (from === to) to = '' //回复自己
       let info = {
         articleId: this.$route.params.id,
         type,
         to,
         from,
-        nthfloor
+        nthfloor,
+        userId: this._id
       }
-      this.commentInfo = info
+      this.commentInfo = info //发送到服务端的信息from, to, userid...
     },
-    replyBtnEvent(comment) {
-      this.articleComments = comment
+    replyBtnEvent(comment) {//发送评论后,服务端会返回最新的评论数据
+      this.articleComments = comment 
     }
+  },
+  computed: {
+    ...mapState(['_id', 'username', 'avatar'])
   },
   mounted() {
     this.dialogboxEl = this.$refs.dialogbox.$el;
@@ -200,10 +210,9 @@ export default {
           flex-shrink: 0;
           width: 50px;
           height: 50px;
-          border: 1px dashed #fff;
-          border-radius: 50%;
           margin-right: 10px;
           img {
+            border-radius: 50%;
             width: 100%;
           }
         }

@@ -2,7 +2,7 @@
   <div class="write-article" v-loading="isLoading" :element-loading-text="loadingText">
     <header class="write-article-header">
       <span class="go-back">
-        <a href="javascript:void(0)">&lt;&lt;返回</a>
+        <a href="javascript:void(0)" @click.prevent="$router.go(-1)">&lt;&lt;返回</a>
       </span>
       <div>写文章</div>
       <el-button type="primary" size="small" @click="submit">发表</el-button>
@@ -71,8 +71,10 @@ export default {
       const reg = /!\[.[^!]*\]\(http(s)?:\/\/.[^!\[\]]+\.(jpg|png|jpeg|gif|webp|icon|bmp)\)/gi
       const reg1 = /!\[.[^!]*\]\((.*)\)/
       let arr = this.articleContent.match(reg)
+      console.log(arr)
       arr = arr ? arr : []
-      arr.map(item => item.match(reg1)[1])
+      arr = arr.map(item => item.match(reg1)[1])
+      console.log(arr)
       this.articleData.imgUrl = arr
       this.articleData.content = this.articleContent;
     },
@@ -211,6 +213,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .write-article {
+  overflow: hidden;
   margin-bottom: 5px;
   .write-article-header {
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;

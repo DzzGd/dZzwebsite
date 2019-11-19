@@ -8,11 +8,11 @@ import {
 export default {
   [SET_LOGIN](state, payLoad) {
     state.logStatus = true
+    state.createTime= payLoad.createTime
     state.username  = payLoad.username
     state.identify  = payLoad.identify
     state._id       = payLoad._id
     state.avatar    = payLoad.avatar
-    state.createTime= payLoad.createTime
   },
   [SET_LOGOUT](state) {
     state.logStatus = false

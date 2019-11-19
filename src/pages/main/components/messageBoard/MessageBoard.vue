@@ -9,7 +9,7 @@
           <i v-else class="el-icon-loading" ></i>
         </el-button>
       </div>
-
+      <leave-message></leave-message>
       <el-card class="box-card dz-box-card" v-for="(item, index) in leaveMessage" :key="item._id">
         <div class="message-avatar">
           <!-- 头像 -->
@@ -46,12 +46,15 @@
         </div>
       </el-card>
     </el-card>
+    <load-more :has-more="hasMore" @loadMore="loadMore"></load-more>
   </div>
 </template>
 
 <script>
 import { debounce } from '@common/utils/apptools.js'
 import homepageService from '@common/network/homepage-service'
+import LoadMore from '@commonCmps/loadMore/LoadMore'
+import LeaveMessage from '@commonCmps/leaveMessage/LeaveMessage'
 export default {
   name: "MessageBoard",
   data() {
@@ -66,7 +69,8 @@ export default {
       clickLikesNum: {},
       clickDislikesNum: {},
       updateDebounce: null,
-      isFlush: false
+      isFlush: false,
+      timer: null
     };
   },
   methods: {
@@ -123,7 +127,7 @@ export default {
       this.pageInfo.requestPage++
       // 请求留言数据
       homepageService.getLeaveMessage(this.pageInfo, data => {
-        this.leaveMessage = data.leaveMessage.data
+        this.leaveMessage.push(...data.leaveMessage.data)
         this.totalPages = data.leaveMessage.totalPages
         this.pageInfo.requestPage = data.leaveMessage.currentPage
         this.isFlush = false
@@ -133,21 +137,36 @@ export default {
       })
     },
     flush() {
+      if (!this.timer) {
+        this.clicks = 3
+        this.timer = setTimeout(() => {
+          this.timer = null
+        }, 6000);
+
+      } else {
+        this.clicks --
+        if (this.clicks <= 0) return this.$message.warning('慢点,遭不住了...')
+      }
       this.isFlush = true
       this.pageInfo.requestPage = 0
+      this.leaveMessage = []
+      this.get_leave_message()
+    },
+    loadMore() {
       this.get_leave_message()
     }
   },
   created() {
     this.get_leave_message()
   },
-  mounted() {
-
-  },
   computed:{
-    getUpdateInfo() {
-      
+    hasMore() {
+      return this.totalPages > this.pageInfo.requestPage
     }
+  },
+  components: {
+    LoadMore,
+    LeaveMessage
   }
 };
 </script>

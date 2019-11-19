@@ -108,7 +108,8 @@ export default {
         "Vue",
         "Node",
         "webpack",
-        "Express"
+        "Express",
+        "React"
       ],
       selectTagsNum: 5,
       select: [

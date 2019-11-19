@@ -2,10 +2,9 @@
   <div class="head-nav-bar">
     <ul class="navbar-list">
       <li
-        v-for="(item,index) in barList"
+        v-for="item in barList"
         :key="item.router"
-        :class="currentIndex===index?'bt':''"
-        @click="currentIndex=index"
+        :class="currentRouter===item.router?'bb':''"
       >
         <router-link :to="item.router">{{item.font}}</router-link>
       </li>
@@ -25,8 +24,13 @@ export default {
         { router: "/WriteArticle", font: "写文章" },
         { router: "/FriendLink", font: "友情链接" }
       ],
-      currentIndex: 0
+      currentRouter: '/HomePage'
     };
+  },
+  watch: {
+    $route(val) {
+      this.currentRouter = val.path
+    }
   }
 };
 </script>
@@ -57,7 +61,7 @@ export default {
         }
       }
     }
-    .bt {
+    .bb {
       border-bottom: 4px solid #40a0ff96;
     }
   }

@@ -9,9 +9,9 @@
       <p>
         <span class="ptitle">已经运行:</span>
         <span class="highlight">{{showTime.day}}</span>天
-        <span class="highlight">{{showTime.hour}}</span>小时
-        <span class="highlight">{{showTime.minute}}</span>分
-        <span class="highlight">{{showTime.second}}</span>秒
+        <span class="highlight">{{showTime.hour.padStart(2,0)}}</span>小时
+        <span class="highlight">{{showTime.minute.padStart(2,0)}}</span>分
+        <span class="highlight">{{showTime.second.padStart(2,0)}}</span>秒
       </p>
       <p>
         <span class="ptitle">沃德前端:</span>
@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       createTime: '2019/11/01',
-      showTime: {}
+      showTime: {day:'',hour:'',minute:'',second:''}
     };
   },
   methods: {
@@ -46,10 +46,10 @@ export default {
         let space = endTime - startTime
         let allSeconds = space / 1000 
         let tempDate = {}
-        tempDate.day = Math.floor(allSeconds / (60 * 60 * 24))
-        tempDate.hour = Math.floor(allSeconds % (60 * 60 * 24) / (60 * 60))
-        tempDate.minute = Math.floor(allSeconds % (60 * 60 * 24) % (60 * 60) / 60)
-        tempDate.second = Math.floor(allSeconds % (60 * 60 * 24) % (60 * 60) % 60)
+        tempDate.day = Math.floor(allSeconds / (60 * 60 * 24)) + ''
+        tempDate.hour = Math.floor(allSeconds % (60 * 60 * 24) / (60 * 60)) + ''
+        tempDate.minute = Math.floor(allSeconds % (60 * 60 * 24) % (60 * 60) / 60) + ''
+        tempDate.second = Math.floor(allSeconds % (60 * 60 * 24) % (60 * 60) % 60) + ''
         this.showTime = tempDate
       }, 1000);
     }
