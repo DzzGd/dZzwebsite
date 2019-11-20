@@ -21,7 +21,7 @@
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-pinglun1" />
             </svg>
-            <span>{{item.comments.commentsNum}}</span>
+            <span>{{item.comments?item.comments.commentsNum:0}}</span>
             <svg class="icon" aria-hidden="true">
               <use xlink:href="#icon-yuedu" />
             </svg>

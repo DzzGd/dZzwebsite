@@ -49,7 +49,10 @@ export default {
       let end = new Date(year, month + 1, 1).getTime();
       service.getCalendarData(start, end, res => {
         this.dateArr[year][month] = true;
+        console.log(res)
         this.arrShow.push(...res.data);
+      }, err => {
+        console.log(err)
       });
     }
   },

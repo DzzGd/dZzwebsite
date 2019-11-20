@@ -62,7 +62,7 @@ export default {
     document.addEventListener("scroll", e => {
       windowScroll();
     });
-  },
+  }, 
   methods: {
     resiponsiveResize() {
       this.$bus.$emit("resizeWindow", document.body.clientWidth);

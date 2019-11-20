@@ -226,7 +226,7 @@ export default {
       method: 'get',
       params: { type, currentPage, quantity, value }
     }).then(res => {
-      resolve(res.data.data)
+      resolve(res.data)
     }).catch(err => reject(err))
   },
 

@@ -54,7 +54,7 @@
                   <use xlink:href="#icon-pinglun1" />
                 </svg>
                 <span>
-                  <span>{{item.comments.commentsNum}}</span>
+                  <span>{{item.comments?item.comments.commentsNum:0}}</span>
                 </span>
               </p>
             </div>

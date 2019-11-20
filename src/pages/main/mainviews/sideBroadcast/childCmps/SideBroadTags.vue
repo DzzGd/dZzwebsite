@@ -20,7 +20,9 @@ export default {
   props: {
     tagNumber: {
       type: Array,
-      default: []
+      default() {
+        return []
+      }
     }
   },
   methods: {

@@ -29,10 +29,12 @@ export default {
   methods: {
     getSearchData() {
       service.getSearchData(this.type, ++this.currentPage, this.quantity, this.value, res => {
-        console.log(1)
-        this.articleList.push(...res.list)
-        this.totalPage = res.totalPage
-        this.totalNum  = res.totalNum
+        if (res.data) {
+          this.articleList.push(...res.data.list)
+          this.totalPage = res.data.totalPage
+          this.totalNum  = res.data.totalNum
+        }
+
         this.loading = false
       }, _ => {
         console.log(_)
