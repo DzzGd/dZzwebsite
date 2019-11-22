@@ -158,7 +158,7 @@ export default {
     font-size: 22px;
     color: #e60023;
     font-weight: bold;
-    border-bottom: 4px solid rgb(82, 167, 252);
+    border-bottom: 2px solid rgb(82, 167, 252);
     display: flex;
     justify-content: space-between;
     .more {

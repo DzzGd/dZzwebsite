@@ -42,6 +42,8 @@ export default {
   }
 }
 .side-adver {
+  position: relative;
+  z-index: 1;
   .adver-float {
     width: 190px;
     bottom: 0;

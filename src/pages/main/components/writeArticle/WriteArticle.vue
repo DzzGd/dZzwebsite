@@ -71,10 +71,8 @@ export default {
       const reg = /!\[.[^!]*\]\(http(s)?:\/\/.[^!\[\]]+\.(jpg|png|jpeg|gif|webp|icon|bmp)\)/gi
       const reg1 = /!\[.[^!]*\]\((.*)\)/
       let arr = this.articleContent.match(reg)
-      console.log(arr)
       arr = arr ? arr : []
       arr = arr.map(item => item.match(reg1)[1])
-      console.log(arr)
       this.articleData.imgUrl = arr
       this.articleData.content = this.articleContent;
     },

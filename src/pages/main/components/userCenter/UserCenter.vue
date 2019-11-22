@@ -62,16 +62,18 @@ export default {
       this.isShow = !this.isShow;
     },
     confirmAvatar() {
+      
+      if (this.avatar === this.avatarAddr)  return this.$message.warning('没有更改')
+      if (!this.logStatus) return this.$message.warning('未登录')
       this.isLoading = true
-      if (this.avatar === this.avatarAddr) {
-        this.isLoading = false
-        this.$message.warning('没有更改')
-        return 
-      }
       service.setAvater(this._id, this.avatarAddr, res => {//获取头像地址列表
+      console.log(res)
         this.isLoading = false
         if (res.status === 2) {
           return this.$message.error('出错罗')
+        }
+        if (res.status === 9) {
+          return this.$message.error('未登录, 暂时修改')
         }
         this.action_Avatar(this.avatarAddr)
         this.$message.success("切换成功");
@@ -97,7 +99,7 @@ export default {
     UserCenterAvatarBox
   },
   computed: { //从状态管理中心获取用户数据
-    ...mapState(['_id', 'username','avatar', 'createTime', 'position'])
+    ...mapState(['_id', 'username','avatar', 'createTime', 'position', 'logStatus'])
   },
   watch: {
     avatar(newVal) {

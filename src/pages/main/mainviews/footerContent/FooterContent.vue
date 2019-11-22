@@ -9,13 +9,12 @@
         <p class="declare">DECLARE</p>
         <p class="declare-content">
           <span>
-            😃1. 本网站由dZzGd设计并构建, 材料来自于互联网, 如有内容涉及到它人版权请立即联系给予更改
+            😃本网站由dZzGd设计并构建, 材料来自于互联网, 如有内容涉及到它人版权请立即联系给予更改
           </span>
           <br />
-          <span>😃2. 欢迎大家提出修改意见</span>
           <br />
           <span>
-            Copyright &copy; www.dzzlcxx.top 个人网站 All Rights Reserved.
+            Copyright &copy; 2019 www.dzzlcxx.top 个人网站 All Rights Reserved.
             <br />备案号：
             <a href="http://www.beian.gov.cn" class="link" target="_blank">渝ICP备19010107</a>
           </span>

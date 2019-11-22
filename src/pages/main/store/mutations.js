@@ -20,7 +20,7 @@ export default {
     state.username  = '匿名网友' + (Math.random()+1).toString(16).slice(-6)
     state._id       = null
     state.avatar    = 'http://static.bigbigbigdz.xyz:8111/static/img/avatars/default.png'
-    state.createTime= 'xxxx-xx-xx'
+    state.createTime= 4102329600000
   },
   [SET_AVATAR] (state, payLoad){
     state.avatar = payLoad

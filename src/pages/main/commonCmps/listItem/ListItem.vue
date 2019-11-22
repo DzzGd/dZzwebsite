@@ -107,14 +107,13 @@ export default {
     border-radius: 4px;
     background-color: #fff;
     color: #303133;
-    -webkit-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     padding: 10px;
     margin-bottom: 5px;
+    transition: .3s;
     &:hover {
       transform: translate(1px, -1px);
-      -webkit-box-shadow: 0 3px 12px 1px rgba(0, 0, 0, 0.24);
-      box-shadow: 0 3px 12px 1px rgba(0, 0, 0, 0.24);
+      -webkit-box-shadow: 0 1px 5px 1px rgba(82, 82, 82, 0.24);
+      box-shadow: 1px 1px 5px 1px rgba(82, 82, 82, 0.24);
     }
     .pos {
       position: relative;
@@ -195,7 +194,7 @@ export default {
 }
 .list-enter,
 .list-leave-to {
-  transform: translate(0px, 80px);
+  transform: translate(0px, -40px);
   opacity: 0;
 }
 </style>

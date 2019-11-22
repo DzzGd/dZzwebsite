@@ -34,7 +34,7 @@
       <div class="emoji-btn">
         <span class="emoji" @click="showEmojiBox">&#x1F603;</span>
         <transition name="emoji">
-        <div class="emoji-box" v-show="isShow">
+        <div class="emoji-box" v-show="isEmojiShow">
           <div class="temp-box" >
             <i v-for="(item, index) in emojiArr" :key="index" class="single-emoji">{{item}}</i>
           </div>
@@ -61,7 +61,7 @@ export default {
       leaveMessage: "",
       sendLoading: false,
       emojiArr: [],
-      isShow: false,
+      isEmojiShow: false,
       selectIndex: null
     };
   },
@@ -79,19 +79,19 @@ export default {
       }, 0);
     },
     showEmojiBox(e) {
-      if (this.isShow) {
+      if (this.isEmojiShow) {
         window.removeEventListener('click', this.selectEmoji)
       } else {
         setTimeout(() => {
           window.addEventListener('click', this.selectEmoji)
         }, 0)
       }
-      this.isShow = !this.isShow
+      this.isEmojiShow = !this.isEmojiShow
     },
     selectEmoji(e) {
       const target = e.target || window.event
       window.removeEventListener('click', this.selectEmoji)
-      if (target.className.toLowerCase() !== 'single-emoji') return this.isShow = false
+      if (target.className.toLowerCase() !== 'single-emoji') return this.isEmojiShow = false
       const emoji = target.innerText
       let textarea = this.$refs.content.$el.children[0]
       const start = textarea.selectionStart
@@ -103,7 +103,7 @@ export default {
       textarea.selectionEnd   = end + 2
       textarea = null
       }, 0);
-      this.isShow = false
+      this.isEmojiShow = false
     },
     sendLeaveMessage() {
       if (this.leaveMessage.length <= '6') {
@@ -197,7 +197,6 @@ hr {
       text-align: left;
       border: 1px solid #bbb;
       border-radius: 3px;
-      overflow: hidden;
       .temp-box {
         line-height: 1.3;
         font-size: 18px;
@@ -259,12 +258,13 @@ hr {
       }
     }
     .shadow {
-      width: 100%;
+      width: 180px;
       height: 1px;
-      background-color: transparent;
+      background-color: rgb(255, 255, 255);
       position: absolute;
-      bottom: -1px;
-      box-shadow: 0px -3px 10px 10px rgb(255, 255, 255);
+      bottom: 0;
+      left: 6px;
+      box-shadow: 0px -3px 10px 10px rgba(255, 255, 255, 0.918);
     }
   }
 }

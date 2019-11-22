@@ -109,7 +109,6 @@ export default {
       this.swiperElStyle.transform  = `translate3d(${-this.swiperElWidth * this.currentIndex + extraDistance}px,0,0)`
     },
     mousedown(e) {
-      
       if (this.scrolling) return
       this.mousedownFlag = true
       clearInterval(this.timer)

@@ -26,15 +26,14 @@ export default {
   },
   methods: {
     toSearch(time, info) {
-      console.log(time, info )
-      this.$router.push({ 
-        path: '/SearchDetail',
+      this.$router.push({
+        path: "/SearchDetail",
         query: {
-          type: 'time',
+          type: "time",
           value: time.getTime()
         }
-      })
-      this.$emit('getTimeData', time)
+      });
+      this.$emit("getTimeData", time);
     },
     getCalendarData(year, month) {
       if (!this.dateArr[year]) {
@@ -43,23 +42,28 @@ export default {
       if (!this.dateArr[year][month]) {
         this.dateArr[year][month] = false;
       } else {
-        return
+        return;
       }
       let start = new Date(year, month, 1).getTime();
       let end = new Date(year, month + 1, 1).getTime();
-      service.getCalendarData(start, end, res => {
-        this.dateArr[year][month] = true;
-        console.log(res)
-        this.arrShow.push(...res.data);
-      }, err => {
-        console.log(err)
-      });
+      service.getCalendarData(
+        start,
+        end,
+        res => {
+          this.dateArr[year][month] = true;
+          this.arrShow.push(...res.data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
     }
   },
   created() {
     this.getCalendarData(this.value.getFullYear(), this.value.getMonth());
   },
-  watch: { //监听日期变化
+  watch: {
+    //监听日期变化
     value(newVal, OldVal) {
       let year = newVal.getFullYear();
       let month = newVal.getMonth();

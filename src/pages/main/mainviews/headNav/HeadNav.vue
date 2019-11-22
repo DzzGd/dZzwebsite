@@ -1,5 +1,5 @@
 <template>
-  <el-header height="80px" class="head-nav" :class="{isScrollTop: scrollTop}">
+  <el-header height="80px" class="head-nav" id="head-nav" :class="{isScrollTop: scrollTop}">
     <a href="/" class="logo-link">
       <div class="logo"></div>
     </a>
@@ -47,13 +47,13 @@ export default {
 <style scoped lang="scss">
 @import "@css/mixin";
 @media screen and (max-width: 570px) {
-  .head-nav {
+  #head-nav {
     height: 60px !important;
     .head-nav-bar {
       display: none;
     }
     .menu {
-      justify-content: flex-end !important;
+      justify-content: flex-end;
     }
   }
 }
@@ -63,7 +63,7 @@ export default {
 .head-nav {
   @include wh(100%, 80px);
   @include fj(space-between);
-  @include positionLT(fixed, 0, 0, 999);
+  @include positionLT(fixed, 0, 0, 2000);
   user-select: none;
   border-bottom: 1px solid rgba(99, 99, 99, 0.3);
   margin-bottom: 10px;

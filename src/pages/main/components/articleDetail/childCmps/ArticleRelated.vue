@@ -8,7 +8,7 @@
         <div class="related-item" v-for="item in relatedList" :key="item._id">
           <router-link :to="'/TechShare/Articles/'+item._id" tag="div">
             <img
-              src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3673458369,3844552149&fm=26&gp=0.jpg"
+              :src="item.imgUrl[0]?item.imgUrl[0]:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3673458369,3844552149&fm=26&gp=0.jpg'"
               alt
             />
             <p class="desc ellipsis">{{item.title}}</p>

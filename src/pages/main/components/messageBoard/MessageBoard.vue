@@ -125,20 +125,20 @@ export default {
     },
     get_leave_message() { // 获取留言数据
       this.pageInfo.requestPage++
-      // 请求留言数据
+      // 请求留言数据 
       homepageService.getLeaveMessage(this.pageInfo, data => {
         this.leaveMessage.push(...data.leaveMessage.data)
         this.totalPages = data.leaveMessage.totalPages
         this.pageInfo.requestPage = data.leaveMessage.currentPage
         this.isFlush = false
       }, err => {
-        this.$message.error('麻烦检查哈网络...也可能遇到bug了, 赶快通知我..')
+        this.$message.error('哦豁...')
         this.isFlush = false
       })
     },
     flush() {
       if (!this.timer) {
-        this.clicks = 3
+        this.clicks = 2
         this.timer = setTimeout(() => {
           this.timer = null
         }, 6000);
@@ -172,9 +172,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.message-board {
-
-}
 .box-card {
   transition: 0.3s;
 }
@@ -188,7 +185,6 @@ export default {
   .message-info-contain {
     margin-right: 20px;
   }
-
   .message-info {
     display: flex;
     flex-direction: column;
@@ -210,7 +206,6 @@ export default {
   padding-left: 56px;
   word-break: break-all;
 }
-
 .message-like-dislike {
   display: flex;
   position: relative;
@@ -248,7 +243,6 @@ export default {
     &:hover.dislike {
       color: red;
     }
-
     &:active .hand {
        -webkit-transform: rotate(-30deg);
        transform: rotate(-30deg);
@@ -275,7 +269,6 @@ export default {
   animation: fly 0.3s ease-in-out;
   animation-fill-mode: forwards;
 }
-
 @keyframes fly {
   0% {
     top: -10px;

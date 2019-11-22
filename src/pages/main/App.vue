@@ -157,6 +157,7 @@ body {
     padding: 0;
     overflow-x: hidden;
     overflow-y: visible;
+    margin-bottom: 10px;
   }
   &::-webkit-scrollbar {
     width: 4px;

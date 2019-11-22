@@ -4,7 +4,7 @@
     <div class="search-result-list">
       <div class="search-result-item" v-for="item in articleList" :key="item._id">
         <div class="img-box">
-          <img :src="item.imgUrl[0]?'http://bpic.588ku.com/element_origin_min_pic/17/02/06/ed0c0ddc6271b0717ca64ffdf847eab6.jpg':item.imgUrl[0]" alt class="img" />
+          <img :src="item.imgUrl[0]?item.imgUrl[0]:'http://bpic.588ku.com/element_origin_min_pic/17/02/06/ed0c0ddc6271b0717ca64ffdf847eab6.jpg'" alt class="img" />
         </div>
         <div class="detail-box">
           <header>{{item.title}}</header>

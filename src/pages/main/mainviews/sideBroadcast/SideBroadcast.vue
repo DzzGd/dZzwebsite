@@ -1,6 +1,8 @@
 <template>
   <el-aside width="300px" class="side-broadcast">
-    <div class="my-website">-- dZzGd --</div>
+    <div class="my-website">
+      <i class="title-img"></i>
+    </div>
     <side-broad-swiper :interval="3000"></side-broad-swiper>
     <side-broad-recommend :like-data="likeData"></side-broad-recommend>
     <side-broad-calendar></side-broad-calendar>
@@ -85,16 +87,21 @@ export default {
 }
 .side-broadcast {
   position: relative;
-  // z-index: 1;
+  z-index: 100;
   border: 1px solid #eee;
-  overflow: visible;
+  
   .my-website{
-    border-top: 2px dashed pink;
-    border-bottom: 2px dashed pink;
+     padding: 6px 0 0 0;
+     border: 1px dashed #999;
+     background-color: aliceblue;
+    .title-img {
+      background: url('~@assets/images/logos/57.png') no-repeat -180px center;
+      margin:0 auto;
+      display: block;
+      height: 50px;
+      width: 270px;
+    }
     margin-bottom: 5px;
-    background-color: lightblue;
-    font-size: 26px;
-    padding: 20px;
   }
 }
 </style>

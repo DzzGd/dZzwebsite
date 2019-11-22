@@ -9,7 +9,7 @@ module.exports = webpackMerge(baseConfig, {
   mode  : "production",
   optimization: {
     minimizer: [new uglifyjsPlugin({
-      test: /\.js(\?.*)?$/i,
+      // test: /\.js(\?.*)?$/i,
       parallel: true,
     })]
   },

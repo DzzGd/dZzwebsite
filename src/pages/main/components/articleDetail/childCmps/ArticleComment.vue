@@ -7,7 +7,7 @@
       <div class="comment-floor">
         <div class="main-floor floor" :data-boxid="''+item.nthfloor">
           <div class="avatar">
-            <img :src="item.main.poster.avatar" alt="">
+            <img :src="item.main.poster?item.main.poster.avatar:defaultAvatar" alt="">
           </div>
           <div class="content">
             <p class="content-message">
@@ -29,7 +29,7 @@
              :key="subItem.nthfloor"
         >
           <div class="avatar other-avatar">
-            <img :src="subItem.poster.avatar" alt="">
+            <img :src="subItem.poster?subItem.poster.avatar:defaultAvatar" alt="">
           </div>
           <div class="content">
             <p v-if="subItem.to" class="content-message">
@@ -97,7 +97,6 @@ export default {
   },
   methods: {
     showDialog(id, to, nthfloor) {
-      console.log(id, to, nthfloor)
       var t = setTimeout(() => {
         //点击'回复', 并设置setTimeout让点击后于失去焦点触发
         for (let i = 0, length = this.floors.length; i < length; i++) {
@@ -140,7 +139,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['_id', 'username', 'avatar'])
+    ...mapState(['_id', 'username', 'avatar', 'defaultAvatar'])
   },
   mounted() {
     this.dialogboxEl = this.$refs.dialogbox.$el;

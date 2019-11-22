@@ -60,20 +60,16 @@ export default {
 .homepage-tabs {
   background-color: #fff;
   border: 1px solid #eee;
-  border-radius: 4px;
+  border-radius: 2px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
   transition: all .3s;
-  &:hover {
-    transform: translate(1px, -1px);
-    box-shadow: 0 3px 12px 1px rgba(0, 0, 0, 0.24);
-  }
   .title {
     padding: 20px 5px 10px 10px;
     font-size: 22px;
     color: #e60023;
     font-weight: bold;
     font-weight: "黑体";
-    border-bottom: 4px solid rgb(82, 167, 252);
+    border-bottom: 2px solid rgb(82, 167, 252);
     display: flex;
     justify-content: space-between;
     justify-items: center;

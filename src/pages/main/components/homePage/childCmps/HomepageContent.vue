@@ -92,7 +92,6 @@ export default {
 
 .container {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  margin-top: 10px;
   border-top: 1px solid #eee;
   .inner {
     border-radius: 4px;
@@ -105,8 +104,8 @@ export default {
     font-weight: "黑体";
     background-color: #fff;
     border: 1px solid #eee;
-    border-radius: 4px;
-    border-bottom: 4px solid rgb(82, 167, 252);
+    border-radius: 2px;
+    border-bottom: 2px solid rgb(82, 167, 252);
     display: flex;
     justify-content: space-between;
     justify-items: center;

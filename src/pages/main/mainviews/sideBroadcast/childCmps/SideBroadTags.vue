@@ -11,7 +11,7 @@
       </span>
     </div>
   </div>
-</template>
+</template> 
 
 <script>
 import service from '@common/network/homepage-service'
