@@ -16,7 +16,7 @@
           <el-avatar
             shape="square"
             size="medium"
-            src="https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png"
+            :src="avatar"
             class="message-info-contain"
           ></el-avatar>
 
@@ -55,6 +55,7 @@ import { debounce } from '@common/utils/apptools.js'
 import homepageService from '@common/network/homepage-service'
 import LoadMore from '@commonCmps/loadMore/LoadMore'
 import LeaveMessage from '@commonCmps/leaveMessage/LeaveMessage'
+import { mapState } from 'vuex'
 export default {
   name: "MessageBoard",
   data() {
@@ -160,6 +161,7 @@ export default {
     this.get_leave_message()
   },
   computed:{
+    ...mapState(['avatar']),
     hasMore() {
       return this.totalPages > this.pageInfo.requestPage
     }
@@ -184,6 +186,7 @@ export default {
 
   .message-info-contain {
     margin-right: 20px;
+    background-color: rgb(236, 236, 236);
   }
   .message-info {
     display: flex;

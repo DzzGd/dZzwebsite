@@ -2,7 +2,7 @@
   <div class="head-nav-avatar">
     <el-dropdown trigger="click" class="el-dropdown" @command="handleCommand">
       <a class="el-dropdown-link">
-        <el-avatar :size="50" :src="avatar" class="avatar"></el-avatar>
+        <img :src="avatar" alt="头像" title="来自dzzgd的问候~" class="avatar">
         <i class="el-icon-arrow-down el-icon--right"></i>
       </a>
       <el-dropdown-menu slot="dropdown">
@@ -129,7 +129,10 @@ export default {
       flex-wrap: nowrap;
       align-items: center;
       .avatar {
-        background-color: transparent;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: rgb(236, 236, 236);
       }
       &:focus {
         border: 0;

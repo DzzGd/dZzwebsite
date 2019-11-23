@@ -304,25 +304,6 @@
   margin: 0;
 }
 
-.markdown-body ul,
-.markdown-body ol {
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.markdown-body ol ol,
-.markdown-body ul ol {
-  list-style-type: lower-roman;
-}
-
-.markdown-body ul ul ol,
-.markdown-body ul ol ol,
-.markdown-body ol ul ol,
-.markdown-body ol ol ol {
-  list-style-type: lower-alpha;
-}
-
 .markdown-body dd {
   margin-left: 0;
 }
@@ -413,6 +394,7 @@
 .markdown-body dl,
 .markdown-body table,
 .markdown-body pre {
+  list-style-type: decimal;
   margin-top: 0;
   margin-bottom: 16px;
 }
@@ -525,7 +507,7 @@
 
 .markdown-body ul,
 .markdown-body ol {
-  list-style: decimal;
+  list-style-type: decimal;
   padding-left: 2em;
 }
 
@@ -533,7 +515,7 @@
 .markdown-body ul ol,
 .markdown-body ol ol,
 .markdown-body ol ul {
-  list-style: decimal;
+  list-style-type: decimal;
   margin-top: 0;
   margin-bottom: 0;
 }
