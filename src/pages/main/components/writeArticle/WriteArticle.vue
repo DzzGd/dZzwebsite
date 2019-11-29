@@ -63,7 +63,7 @@ export default {
           }, 0);
         })
         .catch(_ => {
-          this.$message.warning(_);
+          this.$message.warning(_.toString());
           this.isLoading = false;
         });
     },
@@ -199,8 +199,8 @@ export default {
       delStorage();
     },
     resetDate() {
-      this.$refs.articleInfo.resetForm();
-      this.$refs.articleContent.resetContent();
+      // this.$refs.articleInfo.resetForm();
+      // this.$refs.articleContent.resetContent();
     }
   },
   components: {

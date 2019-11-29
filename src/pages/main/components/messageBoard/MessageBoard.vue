@@ -16,7 +16,7 @@
           <el-avatar
             shape="square"
             size="medium"
-            :src="avatar"
+            :src="item.poster ? item.poster.avatar : defaultAvatar"
             class="message-info-contain"
           ></el-avatar>
 
@@ -161,7 +161,7 @@ export default {
     this.get_leave_message()
   },
   computed:{
-    ...mapState(['avatar']),
+    ...mapState(['defaultAvatar']),
     hasMore() {
       return this.totalPages > this.pageInfo.requestPage
     }

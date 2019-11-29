@@ -497,7 +497,7 @@
 }
 
 .markdown-body h5 {
-  font-size: 0.875em;
+  font-size: 0.875em; 
 }
 
 .markdown-body h6 {
@@ -507,15 +507,21 @@
 
 .markdown-body ul,
 .markdown-body ol {
-  list-style-type: decimal;
-  padding-left: 2em;
+  padding-left: 0em;
 }
 
+.markdown-body ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+}
+.markdown-body ul {
+  list-style-type: circle;
+  list-style-position: inside;
+}
 .markdown-body ul ul,
 .markdown-body ul ol,
 .markdown-body ol ol,
 .markdown-body ol ul {
-  list-style-type: decimal;
   margin-top: 0;
   margin-bottom: 0;
 }

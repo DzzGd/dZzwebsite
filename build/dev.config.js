@@ -24,7 +24,7 @@ module.exports = webpackMerge(baseConfig, {
     inline    : true,  
     hot       : true,
     host      : getIPAdress(),
-    port      : 8080,
+    port      : 8081,
     historyApiFallback: true,
     //SPA页面中, 依赖HTML5的history模式
     // 代理

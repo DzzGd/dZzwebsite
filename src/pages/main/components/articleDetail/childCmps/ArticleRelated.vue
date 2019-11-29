@@ -9,7 +9,7 @@
           <router-link :to="'/TechShare/Articles/'+item._id" tag="div">
             <img
               :src="item.imgUrl[0]?item.imgUrl[0]:'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3673458369,3844552149&fm=26&gp=0.jpg'"
-              alt
+              alt="图片"
             />
             <p class="desc ellipsis">{{item.title}}</p>
             <p class="desc-detail">{{item.brief}}</p>
@@ -71,8 +71,7 @@ export default {
         text-align: left;
         img {
           width: 100%;
-          min-height: 120px;
-          max-height: 200px;
+          height: 200px;
           object-fit: cover;
           border: 4px solid #fff;
         }

@@ -1,5 +1,5 @@
 const tool = require('../utils/tool')
-const qs = require('querystring') 
+const qs = JSON
 // 这里axios需要引用querystring来对post传输的数据进行解析
 module.exports = {
   // 登录 

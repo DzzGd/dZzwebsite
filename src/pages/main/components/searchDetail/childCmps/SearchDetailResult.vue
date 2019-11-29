@@ -73,7 +73,7 @@ export default {
   .search-result-list {
     .search-result-item {
       border-bottom: 1px dashed #eee;
-      padding: 20px;
+      padding: 20px 10px;
       display: flex;
       .img-box {
         margin-right: 20px;

@@ -1,5 +1,6 @@
 const axios = require('./axios')
-const qs = require('querystring')
+// const qs = require('querystring')
+const qs = JSON
 export default {
   isLoged(resolve, reject) {
     axios.request({
@@ -86,7 +87,7 @@ export default {
     axios.request({
       url: '/interactive/sendArticle',
       method: 'post',
-      data: qs.stringify(data)
+      data: JSON.stringify(data)
     })
       .then(res => {
         if (res.data.status === 500) reject()

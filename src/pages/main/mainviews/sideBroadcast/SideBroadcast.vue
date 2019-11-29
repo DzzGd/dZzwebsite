@@ -88,8 +88,6 @@ export default {
 .side-broadcast {
   position: relative;
   z-index: 100;
-  border: 1px solid #eee;
-  
   .my-website{
      padding: 6px 0 0 0;
      border: 1px dashed #999;

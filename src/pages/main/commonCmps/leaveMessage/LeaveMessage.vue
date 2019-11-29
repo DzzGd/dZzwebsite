@@ -149,6 +149,8 @@ export default {
 
 <style scoped lang="scss">
 .box-card {
+  position: relative;
+  z-index: 101;
   overflow: visible;
 }
 .title-text {

@@ -131,10 +131,3 @@ img{
   background-color: #00633e;
   border-color: #005636;
 }
-
-.markdown-body ol {
-  list-style-type: decimal;
-}
-.markdown-body ul {
-  list-style-type: circle;
-}

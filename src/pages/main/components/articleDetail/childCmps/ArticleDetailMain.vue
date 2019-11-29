@@ -94,7 +94,7 @@ export default {
 
     .detail-content {
       margin-top: 10px;
-      padding: 10px 8px;
+      padding: 10px 14px;
     }
   }
 }

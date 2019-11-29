@@ -5,12 +5,13 @@ function createAxios() {
   const instance = new axios.create({
     timeout: 5000,
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded'
     },
-    // baseURL: '/api/front/',
+    baseURL: '/api/front/',
     // baseURL: 'http://127.0.0.1:5200/front/',
     // baseURL: 'https://dzzlcxx.top:8888/front/',
-    baseURL: 'http://dzzlcxx.top:8888/front/',
+    // baseURL: 'http://dzzlcxx.top:8888/front/',
     // baseURL: 'http://127.0.0.1:8888/front/',
   })
   return instance
