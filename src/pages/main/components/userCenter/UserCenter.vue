@@ -125,8 +125,8 @@ export default {
 }
 @import "@css/mixin";
 .user-center {
+  position: relative;
   &::before{
-    position: absolute;
     content: "";
     width:100%;
     height: 570px;
@@ -139,6 +139,10 @@ export default {
   padding-left: 5px;
   padding-right: 5px;
   .user-center-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
     .user-info-header {
       border-bottom: 1px dashed $warning;
       text-align: center;
