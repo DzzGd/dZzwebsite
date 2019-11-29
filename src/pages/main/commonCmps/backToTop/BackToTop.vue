@@ -77,6 +77,7 @@ export default {
   border-radius: 50%;
   position: fixed;
   overflow: hidden;
+  z-index: 9999;
   cursor: pointer;
   a{
     &:hover img{
