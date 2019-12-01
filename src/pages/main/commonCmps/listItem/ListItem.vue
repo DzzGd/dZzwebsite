@@ -133,7 +133,7 @@ export default {
       line-height: 1.5;
       display: flex;
       .item-img {
-        max-width: 300px;
+        max-width: 250px;
         min-width: 200px;
         flex-basis: 100%;
         max-height: 220px;
