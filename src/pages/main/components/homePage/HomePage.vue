@@ -20,12 +20,12 @@
 </template>
 
 <script>
-import HomepageSwiperBox from "./childCmps/HomepageSwiperBox";
-import   HomepageContent from "./childCmps/HomepageContent";
-import      HomepageTabs from "./childCmps/HomepageTabs";
+import HomepageSwiperBox from "./childCmps/HomepageSwiperBox"
+import   HomepageContent from "./childCmps/HomepageContent"
+import      HomepageTabs from "./childCmps/HomepageTabs"
 import          ListItem from "@commonCmps/listItem/ListItem"
 import          LoadMore from "@commonCmps/loadMore/LoadMore"
-import           service from "@common/network/homepage-service";
+import           service from "@common/network/homepage-service"
 import HomepageNodeCommunity from "./childCmps/HomepageNodeCommunity"
 export default {
   name: "HomePage.vue",
@@ -40,43 +40,48 @@ export default {
         CSS: 1
       },
       tabControlArticles: null
-    };
+    }
   },
-  created() {
+  created() { 
     // 请求数据
-    this.getRankArticles();
-    this.getHotArticles();
+    this.getRankArticles()
+    this.getHotArticles()
   },
   methods: {
     getRankArticles() {
       service.getRankArticles(
         { currentPage: ++this.homepageArticles.page, quantity: 10 },
         res => {
-          this.homepageArticles.list.push(...res.data.data)
-          this.topThree = this.homepageArticles.list.slice(0, 3);
-          this.other    = this.homepageArticles.list.slice(3)
-          this.homepageArticles.totalpages = res.total
+          let data = res.data.data
+          if (this.homepageArticles.page === 1) {
+            this.topThree = data.slice(0, 3)
+            this.other    = data.slice(3)
+          } else {
+            this.other.push(...data.slice(3))
+          }
+          
+          this.homepageArticles.totalpages = res.data.totalPages
         },
         err => {
-          console.log(err);
+          this.$message.error('get rankarticle failed')
         } 
-      );
+      )
     },
     getHotArticles() {
       service.getHotArticles(
         this.tags,
         res => {
-          this.tabControlArticles = res.data;
+          this.tabControlArticles = res.data
         },
         err => {
           setTimeout(() => {
-            this.getHotArticles();
-          }, 10 * 1000);
+            this.getHotArticles()
+          }, 10 * 1000)
         }
-      );
+      )
     },
     loadMore() {
-
+      this.getRankArticles()
     },
   },
   components: {

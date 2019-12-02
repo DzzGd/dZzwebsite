@@ -42,15 +42,15 @@ export default {
     return {
       keyword: '',
       categoryList:{
-        CSS :{currentPage: 0, list: [], totalPage: 0},
-        HTML:{currentPage: 0, list: [], totalPage: 0},
-        Vue :{currentPage: 0, list: [], totalPage: 0},
-        Node:{currentPage: 0, list: [], totalPage: 0},
-        Express  :{currentPage: 0, list: [], totalPage: 0},
-        React  :{currentPage: 0, list: [], totalPage: 0},
-        webpack:{currentPage: 0, list: [], totalPage: 0},
-        JavaScript:{currentPage: 0, list: [], totalPage: 0},
-        other:{currentPage: 0, list: [], totalPage: 0},
+        CSS :{currentPage: 0, list: [], totalPages: 0},
+        HTML:{currentPage: 0, list: [], totalPages: 0},
+        Vue :{currentPage: 0, list: [], totalPages: 0},
+        Node:{currentPage: 0, list: [], totalPages: 0},
+        Express  :{currentPage: 0, list: [], totalPages: 0},
+        React  :{currentPage: 0, list: [], totalPages: 0},
+        webpack:{currentPage: 0, list: [], totalPages: 0},
+        JavaScript:{currentPage: 0, list: [], totalPages: 0},
+        other:{currentPage: 0, list: [], totalPages: 0},
       },
       currentCategory: 'HTML',
       firstLoad: true
@@ -91,17 +91,17 @@ export default {
       service.getSingleCategory(category, page).then(res => {
         if (res.data.status === 1) {
           this.categoryList[category].list.push(...res.data.data.list)
-          this.categoryList[category].totalPage = res.data.data.totalPages
+          this.categoryList[category].totalPages = res.data.data.totalPages
         }
       }).catch(err => {})
     },
   },
   computed:{
     hasMore() {
-      if (this.categoryList[this.currentCategory].totalPage <= this.categoryList[this.currentCategory].currentPage) {
+      if (this.categoryList[this.currentCategory].totalPages <= this.categoryList[this.currentCategory].currentPage) {
         return false
       }
-      if (this.categoryList[this.currentCategory].totalPage === 0) {
+      if (this.categoryList[this.currentCategory].totalPages === 0) {
         return false
       }
     }

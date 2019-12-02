@@ -4,8 +4,6 @@
 <head>
   <%= require('html-loader!./layout/head-common.html') %>
   <title><%= htmlWebpackPlugin.options.title%></title>
-
-  <!-- <script src="https://cdn.bootcss.com/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> -->
 </head>
 
 <body>
@@ -19,7 +17,7 @@
         <div class="alert alert-danger"></div>
         <div class="form-group form-group-item username">
           <i class="iconfont icon-login_zhanghu"></i>
-          <input type="text" name="username" id="username" class="un form-control" autocomplete="off" placeholder="0"
+          <input type="text" name="username" id="username" class="un form-control" autocomplete="off" placeholder=" "
             maxlength="16" minlength="6">
           <label for="username" class="placeholder">username</label>
           <i class="tip username-tip">123</i>
@@ -28,11 +26,19 @@
 
         <div class="form-group form-group-item password">
           <i class="iconfont icon-mimalan"></i>
-          <input type="password" name="password" id="password" class="pwd form-control" placeholder="0" maxlength="16"
+          <input type="password" name="password" id="password" class="pwd form-control"  maxlength="16" placeholder=" "
             minlength="6">
           <label for="password" class="placeholder">password</label>
           <i class="tip password-tips">你输入的密码有误</i>
           <img src="<%= require('@assets/images/user/blindfold.png')%>" alt="">
+        </div>
+
+        <div class="form-group form-group-item captcha">
+          <i class="iconfont icon-yanzhengma-"></i>
+          <input type="text" name="captcha" id="captcha" class="cpt form-control"  maxlength="4" placeholder=" "
+            minlength="4">
+            <label for="captcha" class="placeholder">captcha</label>
+            <img src="123" alt="captcha" class="captcha-img">
         </div>
 
         <div class="form-group form-group-func">
@@ -42,7 +48,7 @@
           <a href="/forget" class="forget">&nbsp;&nbsp;忘记密码?</a>
         </div>
         <img src="<%= require('@assets/images/user/normal.png')%>" alt="" class="normal">
-      </form>
+      </form> 
       <div class="curtain">
         <div class="box">
           <i class="iconfont icon-loading"></i><br />

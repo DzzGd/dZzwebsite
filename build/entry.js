@@ -4,7 +4,6 @@ function resolve(targetPath) {
 } 
 module.exports = {
   // index   : ['babel-polyfill', resolve('/main')],
-  home    : resolve('/home'),
   login   : resolve('/user/login'),
   register: resolve('/user/register'),
   forget  : resolve('/user/forget'),

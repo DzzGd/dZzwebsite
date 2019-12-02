@@ -13,7 +13,6 @@ function config(title, name) {
 }
 module.exports.arr = [ 
   config('登录 Login'    , 'login'),
-  config('首页 dZz'      , 'home' ),
   config('注册 Register' , 'register'),
   config('忘记密码 forget', 'forget'),
   config('dDz shares haha', 'index')

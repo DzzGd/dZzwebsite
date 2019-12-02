@@ -7,11 +7,14 @@ const logIn = {
   $alert: null,
   init() {
     this.$alert = $('.alert-danger')
+    this.$captcha = $('.captcha .captcha-img')
+    this.changeCapthca()
     this.eventBind()
   },
   getUserInfo() {
     this.userInfo.username = $('.un').val()
     this.userInfo.password = $('.pwd').val()
+    this.userInfo.captcha  = $('.cpt').val()
   },
   // 幕布提示
   doSuccess() {
@@ -24,6 +27,10 @@ const logIn = {
   doFailed() {
     $('.curtain').hide()
   },
+  changeCapthca() {
+    this.$captcha.attr({'src': 'http://dzzlcxx.top:8888/front/user/captcha?' + Date.now()})
+    $('.cpt').val('')
+  },
   eventBind() {
     const _this = this
 
@@ -31,7 +38,9 @@ const logIn = {
     $('.form-group-item').on('focus', 'input', function () {
       return _this.$alert.hide()
     })
-
+    _this.$captcha.on('click', function() {
+      _this.changeCapthca()
+    })
     // 提交表单 验证是否为空
     $('#login').on('click', function () {
       _this.getUserInfo()
@@ -40,6 +49,9 @@ const logIn = {
       }
       if (!tool.validate('password', _this.userInfo.password)) {
         return _this.$alert.text('密码至少为8位 ').show()
+      }
+      if (!$.trim(_this.userInfo.captcha)) {
+        return _this.$alert.text('验证码不能为空').show()
       }
 
       $('.curtain').show()
@@ -51,11 +63,11 @@ const logIn = {
           _this.doSuccess()
         } else if (ret.status === 0) {
           _this.$alert.removeClass('alert-success').addClass('alert-danger').text(msg).show()
+          _this.changeCapthca()
           _this.doFailed()
         }
       }, function (err) {
         _this.$alert.removeClass('alert-success').addClass('alert-danger').text('网络出现错误,请稍后再试').show()
-        console.log(123)
         _this.doFailed()
       })
     })
